@@ -15,10 +15,16 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window) {
 	};
 
 	$scope.login = () => {
-		console.log("scope account", $scope.account)
 		AuthFactory.loginUser($scope.account)
 		.then( (user) => {
 			$window.location.href ="#";
 		});
+	};
+
+	$scope.logout = () => {
+		AuthFactory.logoutUser();
+		// .then( (user) => {
+		// 	$window.location.href ="#";
+		// });
 	};
 });
