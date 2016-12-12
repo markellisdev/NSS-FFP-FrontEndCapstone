@@ -5,3 +5,4 @@
 *.css.map
 lib/node_modules
 app/values/fb-creds.js
+lib/bower_components
