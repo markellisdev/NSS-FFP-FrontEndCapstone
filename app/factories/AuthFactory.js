@@ -1,6 +1,6 @@
 "use strict";
 
-app.factory("AuthFactory", function() {
+app.factory("AuthFactory", function($window) {
 	let currentUser = null;
 
 	let createUser = function(userObj){
@@ -16,6 +16,7 @@ app.factory("AuthFactory", function() {
 		return firebase.auth().signOut()
 		.then(function(){
 			console.log("sign out successful" );
+			$window.location.url ="#";
 		}), function(error) {
 			console.log("An error happened");
 		};

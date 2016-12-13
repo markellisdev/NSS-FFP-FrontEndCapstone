@@ -7,6 +7,14 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window) {
 		password: ""
 	};
 
+	let logout = () => {
+		AuthFactory.logoutUser();
+	};
+
+	if(AuthFactory.isAuthenticated()){
+		logout();
+	}
+
 	$scope.register = () => {
 		AuthFactory.createUser($scope.account)
 		.then( (userData) => {
@@ -21,10 +29,7 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window) {
 		});
 	};
 
-	$scope.logout = () => {
-		AuthFactory.logoutUser();
-		// .then( (user) => {
-		// 	$window.location.href ="#";
-		// });
-	};
+
 });
+
+

@@ -7,13 +7,16 @@
     <title>EPL Fantasy Football Picker</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="author" href="humans.txt">
+    <base href="/">
   </head>
   <body ng-app="FFP-APP">
 
+  	<div ng-include="'partials/navbar.html'"></div>
+
   	<h1>EPL FANTASY FOOTBALL PICKER 2016/17 SEASON</h1>
 <!-- Temporary code to test login and register-->
-		<div>
-			<section class="auth-form" ng-controller="LoginCtrl">
+		<div ng-view>
+<!-- 			<section class="auth-form" ng-controller="LoginCtrl">
 				<h2>Login or Register</h2>
 				<div>
 					Email: <input type="text" autofocus="true" ng-model="account.email"></input>
@@ -32,7 +35,7 @@
 						Logout
 					</button>
 				</div>
-			</section>
+			</section> -->
 		</div>
 	<!-- PROVIDERS -->
 	<script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
@@ -46,6 +49,7 @@
 	<!-- FACTORIES -->
 	<script type="text/javascript" src="app/factories/AuthFactory.js"></script>
 	<!-- CONTROLLERS -->
+	<script type="text/javascript" src="/app/controllers/NavCtrl.js"></script>
 	<script type="text/javascript" src="/app/controllers/LoginCtrl.js"></script>
 	</body>
 
