@@ -1,0 +1,146 @@
+{
+  "name": "English Premier League 2016/17",
+  "clubs": [
+    {
+      "key": "chelsea",
+      "name": "Chelsea",
+      "code": "CHE",
+      "primaryColour": "#034694",
+      "secondaryColour": "#FFFFFF"
+    },
+    {
+      "key": "arsenal",
+      "name": "Arsenal",
+      "code": "ARS",
+      "primaryColour": "#EF0107",
+      "secondaryColour": "#023474"
+    },
+    {
+      "key": "tottenham",
+      "name": "Tottenham Hotspur",
+      "code": "TOT",
+      "primaryColour": "#F1F1F5",
+      "secondaryColour": "#031C58"
+
+    },
+    {
+      "key": "westham",
+      "name": "West Ham United",
+      "code": "WHU",
+      "primaryColour": "#60223B",
+      "secondaryColour": "#3BC5EC"
+    },
+    {
+      "key": "crystalpalace",
+      "name": "Crystal Palace",
+      "code": "CRY",
+      "primaryColour": "#1B458F",
+      "secondaryColour": "#FFFFFF"
+    },
+    {
+      "key": "manutd",
+      "name": "Manchester United",
+      "code": "MNU",
+      "primaryColour": "#D81A23",
+      "secondaryColour": "#F3CA07"
+    },
+    {
+      "key": "mancity",
+      "name": "Manchester City",
+      "code": "MNC",
+      "primaryColour": "#5CBFEB",
+      "secondaryColour": "#FFFFFF"
+    },
+    {
+      "key": "everton",
+      "name": "Everton",
+      "code": "EVE",
+      "primaryColour": "#005AA5",
+      "secondaryColour": "#FFFFFF"
+    },
+    {
+      "key": "liverpool",
+      "name": "Liverpool",
+      "code": "LIV",
+      "primaryColour": "#D00027",
+      "secondaryColour": "#FFFFFF"
+    },
+    {
+      "key": "westbrom",
+      "name": "West Bromwich Albion",
+      "code": "WBA",
+      "primaryColour": "#091453",
+      "secondaryColour": "#FFFFFF"
+    },
+    {
+      "key": "stoke",
+      "name": "Stoke City",
+      "code": "STO",
+      "primaryColour": "#E03A3E",
+      "secondaryColour": "#E03A3E"
+    },
+    {
+      "key": "sunderland",
+      "name": "Sunderland",
+      "code": "SUN",
+      "primaryColour": "#EB172B",
+      "secondaryColour": "#282828"
+    },
+    {
+      "key": "southampton",
+      "name": "Southampton",
+      "code": "SOT",
+      "primaryColour": "#ED1A3B",
+      "secondaryColour": "#211E1F"
+    },
+    {
+      "key": "leicester",
+      "name": "Leicester City",
+      "code": "LEI",
+      "primaryColour": "#0053A0",
+      "secondaryColour": "#FDBE11"
+    },
+    {
+      "key": "bournemouth",
+      "name": "Bournemouth",
+      "code": "BOU",
+      "primaryColour": "#d41d28",
+      "secondaryColour": "#242425"
+    },
+    {
+      "key": "watford",
+      "name": "Watford",
+      "code": "WAT",
+      "primaryColour": "#ffe300",
+      "secondaryColour": "#333333"
+    },
+    {
+      "key": "burnley",
+      "name": "Burnley",
+      "code": "BUR",
+      "primaryColour": "#53162F",
+      "secondaryColour": "#8CCCE5"
+    },
+    {
+      "key": "hull",
+      "name": "Hull City",
+      "code": "HUL",
+      "primaryColour": "#F5A12D",
+      "secondaryColour": "#333333"
+    },
+    {
+      "key": "middlesbrough",
+      "name": "Middlesbrough",
+      "code": "MID",
+      "primaryColour": "#e31f2b",
+      "secondaryColour": "#ffffff"
+    },
+    {
+      "key": "swansea",
+      "name": "Swansea",
+      "code": "SWA",
+      "primaryColour": "#000000",
+      "secondaryColour": "#333333"
+    }
+  ]
+}

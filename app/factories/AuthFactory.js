@@ -1,6 +1,6 @@
 "use strict";
 
-app.factory("AuthFactory", function() {
+app.factory("AuthFactory", function($window) {
 	let currentUser = null;
 
 	let createUser = function(userObj){
@@ -12,7 +12,14 @@ app.factory("AuthFactory", function() {
 	};
 
 	let logoutUser = function() {
-		return firebase.auth().signOut;
+		console.log("currentUser", isAuthenticated());
+		return firebase.auth().signOut()
+		.then(function(){
+			console.log("sign out successful" );
+			$window.location.url ="#";
+		}), function(error) {
+			console.log("An error happened");
+		};
 	};
 
 	let isAuthenticated = function() {
@@ -30,10 +37,13 @@ app.factory("AuthFactory", function() {
 		});
 	};
 
+
+
 	let getUser = function() {
 		return currentUser;
 	};
 
+console.log("get user on loginCtrl", getUser());
 
 
 	return {createUser, loginUser, logoutUser, isAuthenticated, getUser};
