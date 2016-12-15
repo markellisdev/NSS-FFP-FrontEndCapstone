@@ -51,5 +51,13 @@ app.factory("TeamStorage", ($http, FBCreds) => {
 		});
 	};
 
-	return {getPlayerList, getSinglePlayer, postNewPlayer};
+	let playerHelper = (newPlayer) => {
+		console.log(newPlayer);
+		angular.forEach(newPlayer, function(value, key) {
+		console.log(value, key)
+		  postNewPlayer(value);
+		});
+	};
+
+	return {getPlayerList, getSinglePlayer, postNewPlayer, playerHelper};
 });

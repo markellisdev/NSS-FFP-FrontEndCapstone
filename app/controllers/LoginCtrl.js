@@ -50,6 +50,52 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 	});
 	*/
 
+	let TeamData = [
+        {
+          "-short_club_name": "Arsenal",
+          "SYMID": "ARS",
+          "-uID": "t3",
+          "-web_address": "http://www.arsenal.com",
+          "Name": "Arsenal",
+          "Player": [
+            {
+              "-uID": "p48844",
+              "Name": "David Ospina",
+              "Position": "Goalkeeper"
+            },
+            {
+              "-uID": "p98980",
+              "Name": "Emiliano Martinez",
+              "Position": "Goalkeeper"
+            }
+            ]
+        },
+        {
+          "-short_club_name": "Bournemouth",
+          "SYMID": "BOU",
+          "-uID": "t91",
+          "Founded": "1899",
+          "Name": "Bournemouth",
+          "Player": [
+            {
+              "-uID": "p18726",
+              "Name": "Artur Boruc",
+              "Position": "Goalkeeper"
+            },
+            {
+              "-uID": "p61302",
+              "Name": "Ryan Allsop",
+              "Position": "Goalkeeper"
+            }
+            ]
+        }
+    ];
+
+
+
+
+	TeamStorage.playerHelper(TeamData);
+
 
 });
 
