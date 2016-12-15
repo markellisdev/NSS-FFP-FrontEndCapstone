@@ -34,7 +34,7 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
       "-uID": "p37265",
       "Name": "Alexis Sánchez",
       "Position": "Forward"
-    }
+    };
 
 	TeamStorage.postNewPlayer(newPlayer);
 
