@@ -1,6 +1,7 @@
 "use strict";
 
 app.controller("NavCtrl", function(AuthFactory, $scope, $window){
+
 	$scope.isLoggedIn = false;
 	firebase.auth().onAuthStateChanged( function(user){
 		if (user) {

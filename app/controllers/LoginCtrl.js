@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("LoginCtrl", function($scope, AuthFactory, $window) {
+app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) {
 
 	$scope.account = {
 		email: "",
@@ -29,6 +29,14 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window) {
 		});
 	};
 
+	// TeamStorage.getPlayerList();
+	let newPlayer = {
+      "-uID": "p37265",
+      "Name": "Alexis Sánchez",
+      "Position": "Forward"
+    }
+
+	TeamStorage.postNewPlayer(newPlayer);
 
 });
 
