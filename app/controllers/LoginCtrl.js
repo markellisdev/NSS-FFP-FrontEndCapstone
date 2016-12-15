@@ -29,14 +29,27 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 		});
 	};
 
+	// Testing getPlayerList
 	// TeamStorage.getPlayerList();
+
+	/* Testing postNewPlayer function ----------
 	let newPlayer = {
       "-uID": "p37265",
       "Name": "Alexis Sánchez",
       "Position": "Forward"
-    }
+    };
 
 	TeamStorage.postNewPlayer(newPlayer);
+	*/
+
+	/* Testing getSinglePlayer function ----------
+
+	TeamStorage.getSinglePlayer("-KZ2N0WSCk7W6bhdudGV")
+	.then ((data) => {
+		console.log(data);
+	});
+	*/
+
 
 });
 

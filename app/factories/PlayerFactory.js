@@ -27,7 +27,7 @@ app.factory("TeamStorage", ($http, FBCreds) => {
 
 	let getSinglePlayer = (playerId) => {
 		return new Promise((resolve, reject) => {
-			$http.get(`${FBCreds.URL}/Player/${playerId}.json`)
+			$http.get(`${FBCreds.databaseURL}/Player/${playerId}.json`)
 			.success( (playerObj) => {
 				resolve(playerObj);
 			})
@@ -38,9 +38,11 @@ app.factory("TeamStorage", ($http, FBCreds) => {
 	};
 
 	let postNewPlayer = (newPlayer) => {
+		console.log(newPlayer);
 		return new Promise( (resolve, reject) => {
-			$http.post(`${FBCreds.URL}/Player.json`, angular.toJson(newPlayer))
+			$http.post(`${FBCreds.databaseURL}/Player.json`, angular.toJson(newPlayer))
 			.success( (playerObj) => {
+				getPlayerList(playerObj);
 				resolve(playerObj);
 			})
 			.error( (error) => {
