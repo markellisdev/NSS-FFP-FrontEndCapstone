@@ -19,6 +19,10 @@ app.config(function($routeProvider) {
 	.when('/login', {
 		templateUrl: 'partials/login.html',
 		controller: 'LoginCtrl'
+	})
+	.when('/test', {
+		templateUrl: 'partials/test.html',
+		controller: 'AddClubCtrl'
 	});
 }).config(function($locationProvider){
 	$locationProvider.html5Mode(true);

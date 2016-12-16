@@ -10,7 +10,7 @@ app.factory("ClubFactory", ($http, FBCreds) => {
 		return new Promise(function(resolve, reject){
 			$http.get("../data/teamData.json")
 			.success(function(data){
-				console.log("Club Factory )data", data);
+				// console.log("Club Factory )data", data);
 				resolve(data); //only resolve data in factory
 			});
 		});

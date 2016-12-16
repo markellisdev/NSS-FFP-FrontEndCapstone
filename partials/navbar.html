@@ -1,6 +1,7 @@
 <nav ng-controller="NavCtrl">
 	<ul>
 		<li ng-show="!isLoggedIn"><a href="/login">Login</a></li>
+		<!-- <li ng-show="!isLoggedIn"><a href="/test" ng-click="playerHelper()">Test</a></li> -->
 		<li ng-show="isLoggedIn"><a href="#" ng-click="logout()">Logout</a></li>
 	</ul>
 </nav>
