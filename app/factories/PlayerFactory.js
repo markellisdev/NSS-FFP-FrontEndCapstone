@@ -1,7 +1,6 @@
 "use strict";
 
 app.factory("TeamStorage", ($http, FBCreds) => {
-	console.log("hi");
 
 				// let playerCollection = playerObj;
 				// Object.keys(playerCollection).

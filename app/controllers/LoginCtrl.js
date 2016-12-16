@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) {
+app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage, ClubFactory) {
 
 	$scope.account = {
 		email: "",
@@ -94,7 +94,12 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 
 
 
-	TeamStorage.playerHelper(TeamData);
+	// TeamStorage.playerHelper(TeamData);
+
+  ClubFactory.getClubData()
+  .then( (data) => {
+    console.log("getting data?", data);
+  });
 
 
 });

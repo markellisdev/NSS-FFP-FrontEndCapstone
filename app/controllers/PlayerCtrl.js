@@ -3,6 +3,7 @@
 app.controller('AddPlayerCtrl', function($scope, TeamStorage, $location, AuthFactory){
 
 	let currentUser = AuthFactory.getUser();
+	
 
 	$scope.newPlayer = {
 		'-uID': "",
