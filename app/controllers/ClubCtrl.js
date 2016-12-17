@@ -1,6 +1,6 @@
 "use Strict";
 
-app.controller('AddClubCtrl', function($scope, ClubFactory, $location, AuthFactory) {
+app.controller('AddClubCtrl', function($scope, ClubFactory, $location, AuthFactory, TeamStorage) {
 
 	let currentUser = AuthFactory.getUser();
 
@@ -8,7 +8,7 @@ app.controller('AddClubCtrl', function($scope, ClubFactory, $location, AuthFacto
 
 	let clubData = ClubFactory.getClubData()
 	.then( (data) => {
-		console.log("getting club data?", data);
+		// console.log("getting club data?", data);
 		$scope.clubDataReturned = data.SoccerFeed.SoccerDocument.Team; //data.guides to return array inside object
 		$scope.$apply();
 		});		
@@ -20,10 +20,10 @@ app.controller('AddClubCtrl', function($scope, ClubFactory, $location, AuthFacto
 		for(var x=0; x<$scope.clubDataReturned.length; x++) {
 			let players = $scope.clubDataReturned[x].Player;
 			for(var xx=0; xx<players.length; xx++) {
-				var tempName = "-uID";
+				let tempName = "-uID"; //The dash(-) beginning -uID wasn't working. Solution was to create this tempName variable, which requires bracket notation in the next line.
 				players[xx].teamID = $scope.clubDataReturned[x][tempName];
 				console.log("This is players xx ", players[xx].teamID);
-				// postNewPlayer(players[xx]);
+				TeamStorage.postNewPlayer(players[xx]);
 			}
 		}
 	};
