@@ -1,7 +1,6 @@
 "use strict";
 
 app.factory("TeamStorage", ($http, FBCreds) => {
-	console.log("hi");
 
 				// let playerCollection = playerObj;
 				// Object.keys(playerCollection).
@@ -51,5 +50,25 @@ app.factory("TeamStorage", ($http, FBCreds) => {
 		});
 	};
 
-	return {getPlayerList, getSinglePlayer, postNewPlayer};
+	let playerHelper = (teamData) => {
+		for(var x=0; x<teamData.length; x++) {
+			let players = teamData[x].Player;
+			for(var xx=0; xx<players.length; xx++) {
+				var tempName = "-uID";
+				players[xx].teamID = teamData[x][tempName];
+				console.log("This is players xx ", players[xx].teamID);
+				postNewPlayer(players[xx]);
+			}
+		}
+	};
+		// console.log(teamData);
+		// angular.forEach(teamData, function(value, key) {
+		// 	let players = teamData.Player;
+		// 	angular.forEach(players, function(value) {
+				
+		// 	  postNewPlayer(players);
+				
+		// 	})
+		// console.log(value, key)
+	return {getPlayerList, getSinglePlayer, postNewPlayer, playerHelper};
 });

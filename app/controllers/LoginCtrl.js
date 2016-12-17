@@ -51,6 +51,9 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 	*/
 
 
+	// TeamStorage.playerHelper(TeamData);
+
+
 });
 
 
