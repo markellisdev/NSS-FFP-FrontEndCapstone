@@ -23,6 +23,10 @@ app.config(function($routeProvider) {
 	.when('/test', {
 		templateUrl: 'partials/test.html',
 		controller: 'AddClubCtrl'
+	})
+	.when('/team', {
+		templateUrl: 'partials/teamView.html',
+		controller: 'AddPlayerCtrl'
 	});
 }).config(function($locationProvider){
 	$locationProvider.html5Mode(true);

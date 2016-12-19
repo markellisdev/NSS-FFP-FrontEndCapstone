@@ -26,7 +26,7 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 		AuthFactory.loginUser($scope.account)
 		.then( (user) => {
 			debugger;
-			$window.location.href ="#";
+			$window.location.href ="#/team";
 		})
 		.catch(function(error){
 		  console.log('Error logging in: ', error)
