@@ -6,21 +6,25 @@ app.controller('AddPlayerCtrl', function($scope, TeamStorage, $location, AuthFac
 	
 
 	$scope.newPlayer = {
-		'-uID': "",
+		'uID': "",
 		'Name': '',
 		'Position': '',
-		'Club_id': ''
+		'clubID': ''
 	};
 
-let player = 
+	let player = 
 
-	$scope.addNewPlayer = function(){
-		PlayerFactory.postNewPlayer($scope.newPlayer)
-		.then((response) => {
-			// console.log("response = ", response);
-			$location.url("/home");
-			$scope.$apply();
-		});
+		$scope.addNewPlayer = function(){
+			PlayerFactory.postNewPlayer($scope.newPlayer)
+			.then((response) => {
+				// console.log("response = ", response);
+				$location.url("/home");
+				$scope.$apply();
+			});
 	};
+
+	var self = this;
+	var data = [{name: "Moroni", age: 50} /*,*/];
+	self.tableParams = new NgTableParams({}, { dataset: data});
 
 });
