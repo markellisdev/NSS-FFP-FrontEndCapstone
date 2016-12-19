@@ -25,8 +25,13 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 	$scope.login = () => {
 		AuthFactory.loginUser($scope.account)
 		.then( (user) => {
-			$window.location.href ="#";
-		});
+			debugger;
+			$window.location.href ="#/test";
+		})
+		.catch(function(error){
+		  console.log('Error logging in: ', error)
+		  alert("Either the username or password is incorrect. Please try again");
+		})
 	};
 
 	// Testing getPlayerList
