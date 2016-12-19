@@ -21,8 +21,10 @@ app.controller('AddClubCtrl', function($scope, ClubFactory, $location, AuthFacto
 			let players = $scope.clubDataReturned[x].Player;
 			for(var xx=0; xx<players.length; xx++) {
 				let tempName = "-uID"; //The dash(-) beginning -uID wasn't working. Solution was to create this tempName variable, which requires bracket notation in the next line.
+
 				players[xx].clubID = $scope.clubDataReturned[x][tempName];
 				console.log("This is players xx ", players[xx].clubID);
+
 				TeamStorage.postNewPlayer(players[xx]);
 			}
 		}
