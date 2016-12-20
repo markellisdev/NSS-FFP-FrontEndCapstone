@@ -1,18 +1,17 @@
 "use strict";
 
-app.factory("ClubFactory", $http, FBCreds) => {
+app.factory("MatchFactory", ($http, FBCreds) => {
 
-	let getMatchData = function(){
+	let getMatches = function(){
 
-		let MatchData = [];
+		let Matches = [];
 		return new Promise(function(resolve, reject){
-			$http.get("../data/matchData.json")
+			$http.get(`${FBCreds.databaseURL}/SoccerFeed.json`)
 			.success(function(data){
-				console.log("data", data);
 				resolve(data); //only resolve data in factory
 			});
 		});
 	};
 
-	return {getMatchData};
-}
+	return {getMatches};
+});

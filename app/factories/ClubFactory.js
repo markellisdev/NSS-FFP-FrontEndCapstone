@@ -34,9 +34,12 @@ app.factory("ClubFactory", ($http, FBCreds) => {
 
 		return new Promise((resolve, reject) => {
 			$http.get(`${FBCreds.databaseURL}/Clubs.json`)
-			.success((playerObj) => {
-				console.log("Clubs object is ", clubsObj);
-				resolve(clubsObj);
+			.success((clubsObj) => {
+				for (var obj in clubsObj) {
+					ClubList.push(clubsObj[obj]);
+				}
+				console.log("Clubs object is ", ClubList);
+				resolve(ClubList);
 			})
 			.error( (error) => {
 				reject(error);

@@ -15,8 +15,11 @@ app.factory("TeamStorage", ($http, FBCreds) => {
 		return new Promise((resolve, reject) => {
 			$http.get(`${FBCreds.databaseURL}/Player.json`)
 			.success((playerObj) => {
-					console.log(playerObj);
-					resolve(playerObj);
+					// console.log("Are you getting players?", playerObj);
+					for (var obj in playerObj) {
+						players.push(playerObj[obj]);
+					}
+					resolve(players);
 				})
 					.error( (error) => {
 						reject(error);
