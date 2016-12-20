@@ -24,12 +24,12 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 
 	let p3 = MatchFactory.getMatches() //Need to write this function
 	.then( (matchArray) => {
-		$scope.matches = matchArray.SoccerDocument.MatchData;
+		$scope.matches = matchArray[0].MatchData;
 		$scope.$apply();
 	});
 
 	Promise.all([p1, p2, p3]).then(() => {
-		console.log("Did promises all work? ", $scope.players);
+		// console.log("Did promise dot all work? ", $scope.matches);
 		for (let x=0; x < $scope.players.length; x++) {
 			let tempID = $scope.players[x].clubID;
 
@@ -43,8 +43,30 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 					$scope.$apply();
 				}
 			}
-			// console.log("Player with stats added ", $scope.players[0]);
 		}
+
+		for (let n=0; n < $scope.matches.length; n++) {
+			// console.log("matches.length working??", $scope.matches[n].MatchInfo.MatchDay);
+
+			if ($scope.matches[n].MatchInfo.MatchDay == 1) {
+				let arr = $scope.matches[n].MatchInfo.MatchDay;
+				console.log("array of Matches for week 1", arr);
+
+				let TeamData = $scope.matches[n].TeamData;
+
+				for (let nn=0; nn < TeamData.length; nn++) {
+					if (TeamData[nn].Goal) {
+						let GoalData = TeamData[nn].Goal;
+						for (let nnn=0; nnn < GoalData.length; nnn++) {
+							console.log("Any goals?", GoalData[nnn].PlayerRef);
+							// $scope.players[]
+						}
+					}
+
+				}
+			}
+		}
+
 	});
 
 
@@ -52,16 +74,6 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 
 
 
-	// 	for (let n=0; n < $scope.matches.length; n++) {
-	// 		let TeamData = $scope.matches.TeamData;
-	// 		let GoalData = TeamData[nn].Goal;
-	// 		for (let nn=0; nn < TeamData.length; nn++) {
 
-	// 			for (let nnn=0; nnn < GoalData.length; nnn++) {
-	// 				$scope.players
-	// 			}
-	// 		}
-	// 	}
-	// }
 
 });

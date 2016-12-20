@@ -13,13 +13,7 @@ app.factory("AuthFactory", function($window) {
 
 	let logoutUser = function() {
 		console.log("currentUser", isAuthenticated());
-		return firebase.auth().signOut()
-		.then(function(){
-			console.log("sign out successful" );
-			$window.location.url ="#";
-		}), function(error) {
-			console.log("An error happened");
-		};
+		return firebase.auth().signOut();
 	};
 
 	let isAuthenticated = function() {

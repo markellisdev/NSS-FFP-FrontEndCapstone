@@ -38,7 +38,6 @@ app.factory("ClubFactory", ($http, FBCreds) => {
 				for (var obj in clubsObj) {
 					ClubList.push(clubsObj[obj]);
 				}
-				console.log("Clubs object is ", ClubList);
 				resolve(ClubList);
 			})
 			.error( (error) => {

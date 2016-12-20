@@ -8,12 +8,16 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 	};
 
 	let logout = () => {
-		AuthFactory.logoutUser();
+		AuthFactory.logoutUser()
+		.then(function(data) {
+			$window.location.href = "/home";
+			$scope.$apply();
+		});
 	};
 
-	if(AuthFactory.isAuthenticated()){
-		logout();
-	}
+	// if(AuthFactory.isAuthenticated()){
+	// 	logout();
+	// }
 
 	$scope.register = () => {
 		AuthFactory.createUser($scope.account)
