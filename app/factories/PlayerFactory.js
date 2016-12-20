@@ -11,7 +11,7 @@ app.factory("TeamStorage", ($http, FBCreds) => {
 
 	let getPlayerList = () => {
 		let players = [];
-		
+
 		return new Promise((resolve, reject) => {
 			$http.get(`${FBCreds.databaseURL}/Player.json`)
 			.success((playerObj) => {

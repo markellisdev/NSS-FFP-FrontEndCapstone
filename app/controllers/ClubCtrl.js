@@ -1,5 +1,7 @@
 "use Strict";
 
+// NOT ACTIVE - This controller was only used to upload data from json files to Firebase to form my API, since I did not have one. It is not active in the app without changes to test.html, ClubFactory, and also PlayerFactory. It was only used with the click function inside the test.html partial.
+
 app.controller('AddClubCtrl', function($scope, ClubFactory, $location, AuthFactory, TeamStorage) {
 
 	let currentUser = AuthFactory.getUser();
@@ -8,10 +10,9 @@ app.controller('AddClubCtrl', function($scope, ClubFactory, $location, AuthFacto
 
 	let clubData = ClubFactory.getClubData()
 	.then( (data) => {
-		// console.log("getting club data?", data);
-		$scope.clubDataReturned = data.SoccerFeed.SoccerDocument.Team; //data.guides to return array inside object
+		$scope.clubDataReturned = data.SoccerFeed.SoccerDocument.Team; //data.SoccerFeed.SoccerDocument to return array inside object
 		$scope.$apply();
-		});		
+		});
 
 	$scope.clubs = [];
 
@@ -26,6 +27,21 @@ app.controller('AddClubCtrl', function($scope, ClubFactory, $location, AuthFacto
 				TeamStorage.postNewPlayer(players[xx]);
 			}
 		}
+	};
+
+	$scope.clubList = ClubFactory.getClubList()
+	.then( (data) => {
+		$scope.clubListReturned = data.clubs;
+		$scope.$apply();
+	});
+
+	$scope.clubHelper = () => {
+		console.log("This is the club list inside ClubCtrl", $scope.clubListReturned);
+		for(var x=0; x<$scope.clubListReturned.length; x++) {
+			let club = $scope.clubListReturned;
+				console.log("This is club x ", club[x]);
+				// TeamStorage.postNewPlayer(club[x]);
+			}
 	};
 
 });
