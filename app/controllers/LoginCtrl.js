@@ -8,12 +8,16 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 	};
 
 	let logout = () => {
-		AuthFactory.logoutUser();
+		AuthFactory.logoutUser()
+		.then(function(data) {
+			$window.location.href = "/home";
+			$scope.$apply();
+		});
 	};
 
-	if(AuthFactory.isAuthenticated()){
-		logout();
-	}
+	// if(AuthFactory.isAuthenticated()){
+	// 	logout();
+	// }
 
 	$scope.register = () => {
 		AuthFactory.createUser($scope.account)
@@ -25,8 +29,7 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 	$scope.login = () => {
 		AuthFactory.loginUser($scope.account)
 		.then( (user) => {
-			debugger;
-			$window.location.href ="#/test";
+			$window.location.href ="#/team";
 		})
 		.catch(function(error){
 		  console.log('Error logging in: ', error)

@@ -3,6 +3,7 @@
 *.sublime-workspace
 *.sass-cache
 *.css.map
+css/
 lib/node_modules
 app/values/fb-creds.js
 lib/bower_components

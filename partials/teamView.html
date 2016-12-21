@@ -1,8 +1,63 @@
-<table ng-table="vm.tableParams" class="table" show-filter="true">
-    <tr ng-repeat="user in $data">
-        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
-            {{user.name}}</td>
-        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
-            {{user.age}}</td>
-    </tr>
-</table>
+<h1>Team Selection</h1>
+
+<div class="row collapse tabs" id="res-pos-tabs">
+
+        <div class="col-md-15 column tabs-title is-active">
+            <a class="pos-title" href="#teams-panel-ALL" aria-selected="true" data-pos-tab="ALL">ALL</a>
+        </div>
+
+        <div class="col-md-15 column tabs-title">
+            <a class="pos-title" href="#teams-panel-GK" data-pos-tab="GK" aria-selected="false">GK</a>
+        </div>
+
+        <div class="col-md-15 column tabs-title">
+            <a class="pos-title" href="#teams-panel-DEF" data-pos-tab="DEF" aria-selected="false">DEF</a>
+        </div>
+
+        <div class="col-md-15 column tabs-title">
+            <a class="pos-title" href="#teams-panel-MID" data-pos-tab="MID" aria-selected="false">MID</a>
+        </div>
+
+        <div class="col-md-15 column tabs-title">
+            <a class="pos-title" href="#teams-panel-STR" data-pos-tab="STR" aria-selected="false">STR</a>
+        </div>
+
+</div>
+
+<div class="row collapse tabs-content">
+    <table id="table-players" class="playerrow playlist">
+        <thead>
+            <tr class="table-head">
+                <th></th>
+                <th class="sortableheader player-name name" data-sortid="name" data-sortdef="asc" data-sorticon="left">Name</th>
+                <th class="player-team"></th>
+                <th class="sortableheader teamname team" data-sortid="teamname" data-sortdef="asc">Team</th>
+                <th class="sortableheader player-position weekpoints" data-sortid="position">Position</th>
+                <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">Week 11 Points</th>
+                <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">Week 12 Points</th>
+                <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">Week 13 Points</th>
+                <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">Week 14 Points</th>
+                <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">Week 15 Points</th>
+                <th class="sortableheader player-points points sort sort-desc" data-sortid="points">Season Points</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="player in players">
+
+
+            <tr class="playerstats" data-sortable="" data-playerid="3076" data-pos="MID" data-teamname="Arsenal" data-name="Sanchez, A" data-team="ARS" data-value="6.0" data-points="121" data-picked="43" data-assists="11" data-fullclean="-" data-partclean="-" data-conceed="-" data-owngoal="0" data-yellowcard="3" data-redcard="0" data-missedpen="1" data-pensave="-" data-weekpoints="12" data-ratio="20.2" data-goals="12" data-suspended="" data-injured="" data-sxi="16" data-subs="1" style="display: table-row;">
+                <td class="player-info" data-plaid="3076"><i class="fa fa-info-circle"></i></td>
+                <td class="player-name name">{{player.Name}}</td>
+                <td class="player-team">{{player.clubID}}</td>
+                <td class="team teamname player-teamname"><div class="team-badge png2x" data-team="ARS">ARS</div></td>
+                <td class="player-position">{{player.Position}}</td>
+                <td class="player-weekpoints">5</td>
+                <td class="player-weekpoints">7</td>
+                <td class="player-weekpoints">2</td>
+                <td class="player-weekpoints">12</td>
+                <td class="player-weekpoints">10</td>
+                <td class="player-points sorted">121</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
