@@ -1,25 +1,32 @@
 <h1>Team Selection</h1>
 
+<div class="row">
+    <select>
+    <option ng-repeat="x in selectProps">{{x}}</option>
+    </select>
+</div>
+
+<!-- Changed all href to ui-sref trying ui-router 9:45pm 12/23-->
 <div class="row collapse tabs" id="res-pos-tabs">
 
         <div class="col-md-15 column tabs-title is-active">
-            <a class="pos-title" href="#teams-panel-ALL" aria-selected="true" data-pos-tab="ALL">ALL</a>
+            <a class="pos-title" ui-sref="#teams-panel-ALL" aria-selected="true" data-pos-tab="ALL">ALL</a>
         </div>
 
         <div class="col-md-15 column tabs-title">
-            <a class="pos-title" href="#teams-panel-GK" data-pos-tab="GK" aria-selected="false">GK</a>
+            <a class="pos-title" ui-sref="#teams-panel-GK" data-pos-tab="GK" aria-selected="false">GK</a>
         </div>
 
         <div class="col-md-15 column tabs-title">
-            <a class="pos-title" href="#teams-panel-DEF" data-pos-tab="DEF" aria-selected="false">DEF</a>
+            <a class="pos-title" ui-sref="#teams-panel-DEF" data-pos-tab="DEF" aria-selected="false">DEF</a>
         </div>
 
         <div class="col-md-15 column tabs-title">
-            <a class="pos-title" href="#teams-panel-MID" data-pos-tab="MID" aria-selected="false">MID</a>
+            <a class="pos-title" ui-sref="#teams-panel-MID" data-pos-tab="MID" aria-selected="false">MID</a>
         </div>
 
         <div class="col-md-15 column tabs-title">
-            <a class="pos-title" href="#teams-panel-STR" data-pos-tab="STR" aria-selected="false">STR</a>
+            <a class="pos-title" ui-sref="#teams-panel-STR" data-pos-tab="STR" aria-selected="false">STR</a>
         </div>
 
 </div>
@@ -31,20 +38,20 @@
                 <th></th>
 
                 <th class="sortableheader player-name name" data-sortid="name" data-sortdef="asc" data-sorticon="left">
-                    <a href="#" ng-click="sortType='Name'; sortReverse = !sortReverse">
+                    <a ng-click="sortType='Name'; sortReverse = !sortReverse">
                     Name
                     <span ng-show="sortType == 'Name' && !sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'Name' && sortReverse" class="fa fa-caret-up"></span></a>
                     </th>
 
                 <th class="sortableheader teamname team" data-sortid="teamname" data-sortdef="asc">
-                    <a href="#" ng-click="sortType='code'; sortReverse = !sortReverse">
+                    <a ng-click="sortType='code'; sortReverse = !sortReverse">
                     Team
                     <span ng-show="sortType == 'code' && !sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'code' && sortReverse" class="fa fa-caret-up"></span></a>
                 </th>
                 <th class="sortableheader player-position weekpoints" data-sortid="position">
-                    <!-- <a href="#" ng-click="sortType='Position'; sortReverse = !sortReverse"> -->
+                    <!-- <a ui-sref="#" ng-click="sortType='Position'; sortReverse = !sortReverse"> -->
                     Position
                     <!-- <span ng-show="sortType == 'Position' && !sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'Position' && sortReverse" class="fa fa-caret-up"></span></a> -->
@@ -54,11 +61,7 @@
                 <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">Week 13 Points</th>
                 <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">Week 14 Points</th>
                 <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">Week 15 Points</th>
-                <th class="sortableheader player-points points sort sort-desc" data-sortid="points">
-                    <select>
-                    <option ng-repeat="x in selectProps">{{x}}</option>
-                    </select>
-                </th>
+                <th class="sortableheader player-points points sort sort-desc" data-sortid="points"></th>
             </tr>
         </thead>
         <tbody ng-repeat="player in players | orderBy:sortType:sortReverse" ng-class-even="'even'">
