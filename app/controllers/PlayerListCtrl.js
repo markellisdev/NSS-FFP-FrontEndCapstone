@@ -28,8 +28,15 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 		$scope.$apply();
 	});
 
+	//This is for sorting data on the teamView partial
+	$scope.sortType     = 'Name'; // set the default sort type
+	$scope.sortReverse  = false;  // set the default sort order
+	$scope.selectProps = ["Season Points", "5 Week Form", "3 Week Form"];
+
+
+	// Nothing after this happens until all promises are returned, players, clubs and matches
 	Promise.all([p1, p2, p3]).then(() => {
-		// console.log("Did promise dot all work? ", $scope.matches);
+		console.log("Did promise dot all work? ", $scope.matches);
 		for (let x=0; x < $scope.players.length; x++) {
 			let tempID = $scope.players[x].clubID;
 
@@ -55,7 +62,7 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 			{1: 5, 2: 2, three: 10};
 
 		console.log("Gameweek", Gameweek.three);
-		debugger;
+
 
 
 
@@ -88,7 +95,7 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 									$scope.players[p].weekPoints += 5;
 									$scope.$apply();
 									console.log("The goal scorer is players", p, $scope.players[p] );
-									debugger;
+									// debugger;
 								}
 							}
 							// $scope.players[]
@@ -99,40 +106,40 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 			}
 		}
 
-		for (let n=0; n < $scope.matches.length; n++) {
-			// Evaluate only matches that reached FullTime (those completed)
-			if($scope.matches[n].MatchInfo.Period == "FullTime") {
+		// for (let n=0; n < $scope.matches.length; n++) {
+		// 	// Evaluate only matches that reached FullTime (those completed)
+		// 	if($scope.matches[n].MatchInfo.Period == "FullTime") {
 
-				let md = $scope.matches[n].MatchInfo.MatchDay;
+		// 		let md = $scope.matches[n].MatchInfo.MatchDay;
 
-				for (let nn=0; nn < TeamData.length; nn++) {
-					//If there are goals
-					if (TeamData[nn].Goal) {
-						let GoalData = TeamData[nn].Goal;
-						// For each goal get PlayerRef
-						for (let nnn=0; nnn < GoalData.length; nnn++) {
-							let goalScorer = GoalData[nnn].PlayerRef;
-							// Loop through players
-							for(let p=0; p < $scope.players.length; p++) {
-								let uID = "-uID";
-								// When goalScorer == the players uID, add points accordingly
-								if (goalScorer == $scope.players[p][uID]) {
-									// Ternary to evaluate if there are already weekPoints. If there are, add to them
-									$scope.players[p].weekPoints = $scope.players[p].weekPoints ? $scope.players[p].weekPoints : 0;
-									$scope.players[p].weekPoints += 5;
-									$scope.$apply();
-									console.log("The goal scorer is players", p, $scope.players[p] );
-									debugger;
-								}
-							}
-							// $scope.players[]
-						}
-					}
+		// 		for (let nn=0; nn < TeamData.length; nn++) {
+		// 			//If there are goals
+		// 			if (TeamData[nn].Goal) {
+		// 				let GoalData = TeamData[nn].Goal;
+		// 				// For each goal get PlayerRef
+		// 				for (let nnn=0; nnn < GoalData.length; nnn++) {
+		// 					let goalScorer = GoalData[nnn].PlayerRef;
+		// 					// Loop through players
+		// 					for(let p=0; p < $scope.players.length; p++) {
+		// 						let uID = "-uID";
+		// 						// When goalScorer == the players uID, add points accordingly
+		// 						if (goalScorer == $scope.players[p][uID]) {
+		// 							// Ternary to evaluate if there are already weekPoints. If there are, add to them
+		// 							$scope.players[p].weekPoints = $scope.players[p].weekPoints ? $scope.players[p].weekPoints : 0;
+		// 							$scope.players[p].weekPoints += 5;
+		// 							$scope.$apply();
+		// 							console.log("The goal scorer is players", p, $scope.players[p] );
+		// 							debugger;
+		// 						}
+		// 					}
+		// 					// $scope.players[]
+		// 				}
+		// 			}
 
-				}
+		// 		}
 
-			}
-		}
+		// 	}
+		// }
 
 	});
 
