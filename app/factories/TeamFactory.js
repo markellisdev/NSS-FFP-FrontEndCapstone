@@ -9,6 +9,7 @@ app.factory("TeamFactory", ($http, FBCreds) => {
 				// 		Player.push(playerCollection[key]);
 				// 	})
 
+
 	let getTeamList = () => {
 		let TeamsArr = [];
 
