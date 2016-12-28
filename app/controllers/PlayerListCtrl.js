@@ -118,15 +118,16 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 		for (let n=1; n <= $scope.matches.length; n++) {
 			// For each key, which should be a player id
 			for (let key in $scope.matches[n]) {
-				console.log("Which match? ", key);
+				console.log("Which match? ", $scope.matches[n]);
 				// For each player, compare key to players uID
+						debugger;
 				for(let nn=0; nn < $scope.players.length; nn++) {
 					if (key === $scope.players[nn][uID]) {
-						console.log("Which player was the first to equal key? ", $scope.players[nn][uID]);
-						debugger;
-						console.log(key, " this is the key", $scope.matches[n][key]);
+						// console.log("Which player wjust scored? ", $scope.players[nn][uID]);
+						// console.log("This is what $scope.matches[n] looks like ", $scope.matches[n]);
+						// console.log(key, " this is the key", $scope.matches[n][key]);
 						$scope.players[nn].Gameweeks[n] = $scope.matches[n][key];
-						console.log("First player to score gets ", $scope.matches[n][key], " points!", $scope.players[nn]);
+						console.log("This player just scored ", $scope.matches[n][key], " points!", $scope.players[nn]);
 					}
 				}
 			    // `prop` contains the name of each property, i.e. `'code'` or `'items'`
@@ -135,10 +136,18 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 			}
 		}
 
-		// $scope.keys(data).forEach(function(prop) {
-		//   // `prop` is the property name
-		//   // `data[prop]` is the property value
-		// });
+// Max Beizer Solution
+		// for (let matchWeek=1; matchWeek <= $scope.matches.length; matchWeek++) {
+		//   for (let [playerID, score] of $scope.matches[matchWeek]) {
+		//     $scope.players.map(player => {
+		//       if (playerID === $scope.players[player][uID]) {
+		//         player.Gameweeks[matchWeek] = score;
+		//         console.log("Player is ?", $scope.players[player]);
+		//       }
+		//     });
+		//   }
+		// }
+			//end of Max solution
 
 	});
 
