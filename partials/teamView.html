@@ -66,7 +66,7 @@
         </thead>
         <tbody ng-repeat="player in players | orderBy:sortType:sortReverse" ng-class-even="'even'">
 
-            <tr class="playerstats" style="display: table-row;">
+            <tr ng-click="doesThisWork" class="playerstats" style="display: table-row;">
                 <td class="player-info" data-plaid="3076"><i class="fa fa-info-circle"></i></td>
                 <td class="player-name name">{{player.Name}}</td>
                 <td class="team teamname player-teamname">

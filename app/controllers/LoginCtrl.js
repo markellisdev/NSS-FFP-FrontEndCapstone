@@ -10,7 +10,7 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 	let logout = () => {
 		AuthFactory.logoutUser()
 		.then(function(data) {
-			$window.location.href = "/home";
+			$window.location.href = "/login";
 			$scope.$apply();
 		});
 	};

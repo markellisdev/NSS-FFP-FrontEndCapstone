@@ -39,27 +39,46 @@ app.config(function($stateProvider, $urlRouterProvider) {
 			}
 
 		})
+		// .state('root.home', {
+		//   url: '/',
+		//   views: {
+		//     'container@': {
+		//       templateUrl: 'partials/home.html'
+		//     }
+		//   }
+		// })
 		.state('root.home', {
-		  url: '/',
-		  views: {
-		    'container@': {
-		      templateUrl: 'partials/home.html'
+		    url: '/team',
+		    views: {
+
+		        // the main template will be placed here (relatively named)
+		        'container@': { templateUrl: 'partials/home.html' },
+
+		        // child view two
+		        'userTeamView@root.home': {
+		            templateUrl: 'partials/userTeamView.html', controller: 'AddTeamCtrl'
+		        },
+
+		        // the child views will be defined here (absolutely named)
+		        'teamView@root.home': { templateUrl: 'partials/teamView.html', controller: 'PlayerListCtrl'}
+
+
 		    }
-		  }
+
 		})
-		.state('root.team', {
-		  url: '/team',
-		  views: {
-		    'container@': {
-		      templateUrl: 'partials/teamView.html',
-		      controller: 'PlayerListCtrl'
-		    }
-		  }
-		})
+		// .state('root.team', {
+		//   url: '/team',
+		//   views: {
+		//     'container@': {
+		//       templateUrl: 'partials/teamView.html',
+		//       controller: 'PlayerListCtrl'
+		//     }
+		//   }
+		// })
         .state('/test', {
 		templateUrl: 'partials/test.html',
 		controller: 'AddClubCtrl'
-		})
+		});
 		// .state('root.team', {
 		// templateUrl: 'partials/teamView.html',
 		// controller: 'PlayerListCtrl'
@@ -67,10 +86,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		// .state('/home', {
 		// templateUrl: 'partials/home.html'
 		// })
-		.state('/userTeam', {
-		templateUrl: 'partials/userTeamView.html',
-		controller: 'AddTeamCtrl'
-		});
+		// .state('root.userTeam', {
+		// 	url: '',
+		// 	views: {
+		// 		'container@': {
+		// 		templateUrl: 'partials/userTeamView.html',
+		// 		controller: 'AddTeamCtrl'
+		// 		}
+		// 	}
+		// });
 });
 
 // app.config(function($routeProvider) {

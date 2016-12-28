@@ -22,6 +22,10 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 		$scope.$apply();
 	});
 
+	$scope.doesThisWork = function() {
+		console.log("The button works");
+	};
+
 // Function to return completed matches, i.e. only matches that reached FullTime
 	function isFullTime(match) {
 	  return match.MatchInfo.Period === 'FullTime';
@@ -123,7 +127,7 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 						debugger;
 				for(let nn=0; nn < $scope.players.length; nn++) {
 					if (key === $scope.players[nn][uID]) {
-						// console.log("Which player wjust scored? ", $scope.players[nn][uID]);
+						// console.log("Which player just scored? ", $scope.players[nn][uID]);
 						// console.log("This is what $scope.matches[n] looks like ", $scope.matches[n]);
 						// console.log(key, " this is the key", $scope.matches[n][key]);
 						$scope.players[nn].Gameweeks[n] = $scope.matches[n][key];
@@ -152,14 +156,3 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 	});
 
 });
-
-// for (let nn=0; nn < $scope.players.length; nn++) {
-// 	console.log("$scope.matches", $scope.matches[n]);
-// 	break;
-// 	if ($scope.players[nn].uID == $scope.matches[n]) {
-// 		console.log("Which player is first?", $scope.players[nn]);
-// 		debugger;
-// 		$scope.players[nn].Gameweeks[n].append($scope.matches[n][$scope.players[nn]]);
-// 	}
-// console.log("Which player scored", $scope.players[nn]);
-// }
