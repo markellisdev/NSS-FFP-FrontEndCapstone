@@ -102,10 +102,10 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
                 for(var nn=0; nn < players.length; nn++) {
                     if (playerId === players[nn][uID]) {
                         players[nn].playerScores = players[nn].playerScores ? players[nn].playerScores : [];
-                        console.log("player matched the score", nn, playerId, $scope.matches[n][playerId]);
-                        console.log("Which player? ", players[nn].Name);
+                        // console.log("player matched the score", nn, playerId, $scope.matches[n][playerId]);
+                        // console.log("Which player? ", players[nn].Name);
                         players[nn].playerScores.push($scope.matches[n][playerId]);
-                        console.log("Is this the player?", players[nn]);
+                        // console.log("Is this the player?", players[nn]);
                     }
                 }
                 // `prop` contains the name of each property, i.e. `'code'` or `'items'`
@@ -114,8 +114,14 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
             }
         }
         console.log("loops done, player array", players);
-        $scope.players = players;
-        $scope.$apply();
+        for (let ap=0; ap < players.length; ap++) {
+        	if (players[ap].playerScores) {
+	        	$scope.players.push(players[ap]);
+	        console.log("These players scored", $scope.players, "and these are the matches", $scope.matches);}
+        }
+
+
+
         // $scope.keys(data).forEach(function(prop) {
         //   // `prop` is the property name
         //   // `data[prop]` is the property value
