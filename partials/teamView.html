@@ -56,7 +56,12 @@
                     <!-- <span ng-show="sortType == 'Position' && !sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'Position' && sortReverse" class="fa fa-caret-up"></span></a> -->
                 </th>
-                <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">Week 15 Points</th>
+                <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">
+                    <a ng-click="sortType='playerScores'; sortReverse = !sortReverse">
+                    Gameweek 15 Points
+                    <span ng-show="sortType == 'playerScores' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'playerScores' && sortReverse" class="fa fa-caret-up"></span></a>
+                </th>
             </tr>
         </thead>
         <tbody ng-repeat="player in players | orderBy:sortType:sortReverse" ng-class-even="'even'">
