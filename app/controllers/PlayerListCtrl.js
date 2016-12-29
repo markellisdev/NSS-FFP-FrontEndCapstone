@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFactory, ClubFactory, MatchFactory, NumFactory, TeamFactory){
 
@@ -35,9 +35,9 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 	function groupByMatchDay(total, current) {
 		// console.log("groupByMatchDay function inside", total[current.MatchInfo.MatchDay]);
 	  if (total[current.MatchInfo.MatchDay]) {
-	    total[current.MatchInfo.MatchDay].push(current.TeamData)
+	    total[current.MatchInfo.MatchDay].push(current.TeamData);
 	  } else {
-	    total[current.MatchInfo.MatchDay] = [current.TeamData]
+	    total[current.MatchInfo.MatchDay] = [current.TeamData];
 	  }
 	  return total;
 	}
@@ -81,7 +81,7 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 		return matchData
 			.filter(isFullTime)
 			.reduce(groupByMatchDay, [])
-			.map(x => flatten(x.map(getMatchGoals)).reduce(calculatePlayerScore, {}))
+			.map(x => flatten(x.map(getMatchGoals)).reduce(calculatePlayerScore, {}));
 	})
 	.then(matchData => {
 		console.log("matchData after reducing by matchday", matchData);

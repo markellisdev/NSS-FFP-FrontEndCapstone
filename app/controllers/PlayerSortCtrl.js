@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 app.controller('AddPlayerCtrl', function($scope, TeamStorage, $location, AuthFactory){
 

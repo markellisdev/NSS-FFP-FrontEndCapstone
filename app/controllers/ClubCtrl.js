@@ -1,4 +1,4 @@
-"use Strict";
+"use strict";
 
 // NOT ACTIVE - This controller was only used to upload data from json files to Firebase to form my API, since I did not have one. It is not active in the app without changes to test.html, ClubFactory, and also PlayerFactory. It was only used with the click function inside the test.html partial.
 
