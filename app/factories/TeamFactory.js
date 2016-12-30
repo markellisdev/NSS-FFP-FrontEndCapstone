@@ -55,13 +55,13 @@ app.factory("TeamFactory", function($http, FBCreds)  {
 	};
 
 	let getUserTeams = (userId) => {
-		// console.log('userId', userId);
+		console.log('userId', userId);
 		let userTeamsArr = [];
 		return new Promise((resolve, reject)=> {
 			$http.get(`${FBCreds.databaseURL}/Teams.json?orderBy="uid"&equalTo="${userId}"`)
 			.success((userTeams) => {
 				Object.keys(userTeams).forEach((fbKey) => {
-					userTeams[fbKey].id = fbKey;
+					userTeams[fbKey].teamID = fbKey;
 					userTeamsArr.push(userTeams[fbKey]);
 				});
 				// console.log('userTeamsArr from getUserTeams', userTeamsArr);
