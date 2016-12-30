@@ -15,7 +15,7 @@ app.controller('AddTeamCtrl', function($scope, TeamStorage, $location, AuthFacto
 	let player =
 
 		$scope.addNewTeam = function(){
-			TeamFactory.postNewTeam($scope.newTeam)
+			TeamFactory.postNewTeam($scope.newFantasyTeam)
 			.then((response) => {
 				// console.log("response = ", response);
 				$location.url("/team");

@@ -43,7 +43,7 @@ app.factory("TeamFactory", function($http, FBCreds)  {
 	let postNewTeam = (newTeam) => {
 		console.log(newTeam);
 		return new Promise( (resolve, reject) => {
-			$http.post(`${FBCreds.databaseURL}/Team.json`, angular.toJson(newTeam))
+			$http.post(`${FBCreds.databaseURL}/Teams.json`, angular.toJson(newTeam))
 			.success( (teamObj) => {
 				getTeamList(teamObj);
 				resolve(teamObj);
@@ -82,5 +82,5 @@ app.factory("TeamFactory", function($http, FBCreds)  {
 	// 	}
 	// };
 
-	return {getTeamList, getSingleTeam, postNewTeam};
+	return {getTeamList, getSingleTeam, postNewTeam, getUserTeams};
 });
