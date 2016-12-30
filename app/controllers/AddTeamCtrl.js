@@ -5,10 +5,10 @@ app.controller('AddTeamCtrl', function($scope, TeamStorage, $location, AuthFacto
 	let currentUser = AuthFactory.getUser();
 
 
-	$scope.newPlayer = {
+	$scope.newFantasyTeam = {
 		'uID': currentUser,
-		'Title': '',
-		'Description': '',
+		'title': '',
+		'description': '',
 		'teamID': ''
 	};
 

@@ -1,6 +1,6 @@
 "use strict";
 
-app.factory("TeamFactory", ($http, FBCreds) => {
+app.factory("TeamFactory", function($http, FBCreds)  {
 
 				// let playerCollection = playerObj;
 				// Object.keys(playerCollection).

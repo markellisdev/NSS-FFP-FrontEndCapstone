@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module("FFP-APP", ["ui.router"]);
+var app = angular.module("FFP-APP", ["ui.router", "dndLists"]);
 
 // cut from above to use ui.router , "ngRoute"
 

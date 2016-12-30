@@ -1,12 +1,67 @@
 <div>
-    <form ng-submit="addPost()" style="margin-top:30px;">
-    <h3>Add a new post</h3>
-    <div class="form-group">
-        <input type="text"class="form-control" placeholder="Title" ng-model="title"></input>
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Link" ng-model="link"></input>
-    </div>
-    <button type="submit" class="btn btn-primary">Post</button>
-    </form>
+    <h2>Create a new board</h2>
+
+    <input type="text" ng-model="newFantasyTeam.title" placeholder="Name this board" required>
+    <input type="text" ng-model="newFantasyTeam.description" placeholder="Description(optional)">
+    <button ng-click="addNewTeam">
+        <a ui-sref="#"></a>
+    </button>
 </div>
+
+
+
+<!-- <div class="row collapse tabs-content">
+    <table id="table-players" class="table table-bordered table-striped playerrow playlist" dnd-list dnd-drop="onDrop(table, player, index)">
+        <thead>
+            <tr class="table-head">
+                <th></th>
+
+                <th class="sortableheader player-name name" data-sortid="name" data-sortdef="asc" data-sorticon="left">
+                    <a ng-click="sortType='Name'; sortReverse = !sortReverse">
+                    Name
+                    <span ng-show="sortType == 'Name' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'Name' && sortReverse" class="fa fa-caret-up"></span></a>
+                    </th>
+
+                <th class="sortableheader teamname team" data-sortid="teamname" data-sortdef="asc">
+                    <a ng-click="sortType='code'; sortReverse = !sortReverse">
+                    Team
+                    <span ng-show="sortType == 'code' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'code' && sortReverse" class="fa fa-caret-up"></span></a>
+                </th>
+                <th class="sortableheader player-position weekpoints" data-sortid="position">
+                    <!-- <a ui-sref="#" ng-click="sortType='Position'; sortReverse = !sortReverse"> -->
+                    Position
+                    <!-- <span ng-show="sortType == 'Position' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'Position' && sortReverse" class="fa fa-caret-up"></span></a> -->
+                </th>
+                <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">
+                    <a ng-click="sortType='playerScores'; sortReverse = !sortReverse">
+                    Gameweek 15 Points
+                    <span ng-show="sortType == 'playerScores' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'playerScores' && sortReverse" class="fa fa-caret-up"></span></a>
+                </th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="player in players | orderBy:sortType:sortReverse" ng-class-even="'even'">
+
+            <tr ng-click="doesThisWork" dnd-draggable="getSelectedItemsIncluding(table, player)"
+        dnd-dragstart="onDragstart(table, event)"
+        dnd-moved="onMoved(table)"
+        dnd-dragend="table.dragging = false"
+        dnd-selected="player.selected = !player.selected"
+        ng-class="{'selected': player.selected}"
+        ng-hide="table.dragging && player.selected" class="playerstats" style="display: table-row;">
+                <td class="player-info" data-plaid="3076"><i class="fa fa-info-circle"></i></td>
+                <td class="player-name name">{{player.Name}}</td>
+                <td class="team teamname player-teamname">
+                    <div class="team-badge png2x" data-team="ARS">{{player.code}}</div>
+                </td>
+                <td class="player-position">{{player.Position}}</td>
+                <td class="player-weekpoints">{{player.playerScores[0]}}</td>
+                <td><button ng-click="remove(item)">Add to Team</button></td> <!-- This will be used for Fantasy Team only, just tested here. Need to write function. -->
+            </tr>
+
+        </tbody>
+    </table>
+</div> -->

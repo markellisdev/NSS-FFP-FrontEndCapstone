@@ -16,6 +16,10 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
         $scope.clubs = clubsArray;
         $scope.$apply();
     });
+
+	function addToFantasyTeam(selectedPlayer) {
+
+	}
 // Function to return completed matches, i.e. only matches that reached FullTime
     function isFullTime(match) {
       return match.MatchInfo.Period === 'FullTime';
@@ -117,6 +121,7 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
             }
         }
         console.log("loops done, player array", $scope.players);
+        console.log("Is this item a number?", Number.isNaN($scope.players[0]));
         // $scope.players = donkeys;
         // $scope.$apply();
     });
