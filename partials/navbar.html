@@ -1,6 +1,8 @@
-<nav ng-controller="NavCtrl">
+<nav>
 	<ul>
-		<li ng-show="!isLoggedIn"><a href="/login">Login</a></li>
-		<li ng-show="isLoggedIn"><a href="/home" ng-click="logout()">Logout</a></li>
+		<li ng-show="!isLoggedIn"><a ui-sref=".login">Login</a></li>
+		<li ng-show="isLoggedIn"><a ui-sref=".home" ng-click="logout()">Logout</a></li>
 	</ul>
 </nav>
+
+<h1>EPL FANTASY FOOTBALL PICKER 2016/17 SEASON</h1>

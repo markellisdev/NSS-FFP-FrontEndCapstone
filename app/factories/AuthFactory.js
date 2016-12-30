@@ -37,7 +37,7 @@ app.factory("AuthFactory", function($window) {
 		return currentUser;
 	};
 
-console.log("get user on loginCtrl", getUser());
+// console.log("get user on loginCtrl", getUser());
 
 
 	return {createUser, loginUser, logoutUser, isAuthenticated, getUser};

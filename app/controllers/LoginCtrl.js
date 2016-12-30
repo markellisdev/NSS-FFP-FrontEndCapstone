@@ -29,6 +29,7 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 	$scope.login = () => {
 		AuthFactory.loginUser($scope.account)
 		.then( (user) => {
+			// $location.url('/team'); Didn't work
 			$window.location.href ="#/team";
 		})
 		.catch(function(error){

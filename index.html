@@ -15,13 +15,14 @@
   </head>
   <body ng-app="FFP-APP">
 
-  	<div ng-include="'partials/navbar.html'"></div>
+  	<!-- <div ng-include="'partials/navbar.html'"></div> -->
+	<div ui-view="header"></div>
 
 
-  	<h1>EPL FANTASY FOOTBALL PICKER 2016/17 SEASON</h1>
+  	<!-- <h1>EPL FANTASY FOOTBALL PICKER 2016/17 SEASON</h1> -->
 
 <!-- Temporary code to test login and register-->
-	<div ng-view>
+	<div ui-view="container">
 <!-- 			<section class="auth-form" ng-controller="LoginCtrl">
 				<h2>Login or Register</h2>
 				<div>
@@ -46,7 +47,8 @@
 	<!-- PROVIDERS -->
 	<script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
-	<script type="text/javascript" src="lib/bower_components/angular-route/angular-route.min.js"></script>
+	<script type="text/javascript" src="/lib/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<!-- <script type="text/javascript" src="lib/bower_components/angular-route/angular-route.min.js"></script> -->
 	<script type="text/javascript" src="lib/bower_components/firebase/firebase.js"></script>
 	<!-- APP -->
   <script type="text/javascript" src="app/app.js"></script>
@@ -58,11 +60,13 @@
 	<script type="text/javascript" src="app/factories/ClubFactory.js"></script>
 	<script type="text/javascript" src="app/factories/MatchFactory.js"></script>
 	<script type="text/javascript" src="app/factories/NumberFactory.js"></script>
+	<script type="text/javascript" src="app/factories/TeamFactory.js"></script>
 	<!-- CONTROLLERS -->
 	<script type="text/javascript" src="/app/controllers/NavCtrl.js"></script>
 	<script type="text/javascript" src="/app/controllers/LoginCtrl.js"></script>
 	<script type="text/javascript" src="/app/controllers/ClubCtrl.js"></script>
 	<script type="text/javascript" src="/app/controllers/PlayerListCtrl.js"></script>
+	<script type="text/javascript" src="/app/controllers/AddTeamCtrl.js"></script>
 	</body>
 
 </html>

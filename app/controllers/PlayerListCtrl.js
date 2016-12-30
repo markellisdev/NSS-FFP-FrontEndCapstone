@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFactory, ClubFactory, MatchFactory, NumFactory){
+app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFactory, ClubFactory, MatchFactory, NumFactory, TeamFactory){
 
 	console.log("Is PlayerListCtrl running here? ");
 
@@ -37,6 +37,21 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 	// Nothing after this happens until all promises are returned, players, clubs and matches
 	Promise.all([p1, p2, p3]).then(() => {
 		console.log("Did promise dot all work? ", $scope.matches);
+		let Gameweek = [];
+
+		for (let n=0; n < $scope.matches.length; n++) {
+		// 	// Evaluate only matches that reached FullTime (those completed)
+			if($scope.matches[n].MatchInfo.Period == "FullTime") {
+
+				let md = $scope.matches[n].MatchInfo.MatchDay;
+		// This  changes the gameweek number to a word, 3=three
+				let mdWord = NumFactory.toWords(md);
+				console.log("mdWord", md, mdWord);
+		// Create and array of Gameweeks to be populated by score data later
+				Gameweek[mdWord] = 0;
+			}
+		}
+
 		for (let x=0; x < $scope.players.length; x++) {
 			let tempID = $scope.players[x].clubID;
 
@@ -47,21 +62,11 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 					$scope.players[x].name = $scope.clubs[xx].name;
 					$scope.players[x].primaryColour = $scope.clubs[xx].primaryColour;
 					$scope.players[x].secondaryColour = $scope.clubs[xx].secondaryColour;
+					$scope.players[x].Gameweeks = Gameweek;
 					$scope.$apply();
 				}
 			}
 		}
-
-		let md = 3;
-
-		let mdWord = NumFactory.toWords(md);
-		console.log("mdWord", md, mdWord);
-
-
-		let Gameweek =
-			{1: 5, 2: 2, three: 10};
-
-		console.log("Gameweek", Gameweek.three);
 
 
 
@@ -69,11 +74,15 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 		// This is to loop through all MatchData in Firebase
 		for (let n=0; n < $scope.matches.length; n++) {
 			// console.log("matches.length working??", $scope.matches[n].MatchInfo.MatchDay);
-
+		let weekNum = $scope.matches[n].MatchInfo.MatchDay;
+		let weekWord = NumFactory.toWords(weekNum);
 			// If the MatchDay == user's selection
-			if ($scope.matches[n].MatchInfo.MatchDay == 1) {
+			// -----------------------
+/*-- There's still a problem with the logic here and points totals --*/
+/*-- --------------------------------------------------------------------------------------- --*/
+			if ($scope.matches[n].MatchInfo.MatchDay == weekNum) {
 				let arr = $scope.matches[n].MatchInfo.MatchDay;
-				console.log("array of Matches for week 1", arr);
+				console.log("array of Matches for week ", arr);
 
 				let TeamData = $scope.matches[n].TeamData;
 
@@ -91,8 +100,10 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 								// When goalScorer == the players uID, add points accordingly
 								if (goalScorer == $scope.players[p][uID]) {
 									// Ternary to evaluate if there are already weekPoints. If there are, add to them
-									$scope.players[p].weekPoints = $scope.players[p].weekPoints ? $scope.players[p].weekPoints : 0;
-									$scope.players[p].weekPoints += 5;
+									// $scope.players[p].weekPoints = $scope.players[p].weekPoints ? $scope.players[p].weekPoints : 0;
+									$scope.players[p].Gameweeks[weekWord] = $scope.players[p].Gameweeks[weekWord] ? $scope.players[p].Gameweeks[weekWord] : 0;
+									$scope.players[p].Gameweeks[weekWord] += 5;
+									// $scope.players[p].weekPoints += 5;
 									$scope.$apply();
 									console.log("The goal scorer is players", p, $scope.players[p] );
 									// debugger;
@@ -111,6 +122,21 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 		// 	if($scope.matches[n].MatchInfo.Period == "FullTime") {
 
 		// 		let md = $scope.matches[n].MatchInfo.MatchDay;
+		// This  changes the gameweek number to a word, 3=three
+		// 		let mdWord = NumFactory.toWords(md);
+		// 		console.log("mdWord", md, mdWord);
+		// Create and array of Gameweeks to be populated by score data later
+		// 		let Gameweek = [];
+		//		this.addGameweek = (mdWord) => {
+		//			if (mdWord) {
+		//				this.gweek = {
+		//					[mdWord] = 0
+		//				};
+		//			})
+		//		});
+		//
+		//
+		//
 
 		// 		for (let nn=0; nn < TeamData.length; nn++) {
 		// 			//If there are goals
