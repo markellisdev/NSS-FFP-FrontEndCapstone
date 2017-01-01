@@ -6,18 +6,18 @@ app.controller('AddTeamCtrl', function($scope, TeamStorage, $location, AuthFacto
 
 
 	$scope.newFantasyTeam = {
-		'uID': currentUser,
+		'uid': currentUser,
 		'title': '',
 		'description': '',
 		'teamID': ''
 	};
 
-	let player =
+	let team =
 
 		$scope.addNewTeam = function(){
 			TeamFactory.postNewTeam($scope.newFantasyTeam)
 			.then((response) => {
-				// console.log("response = ", response);
+				console.log("response = ", response);
 				$location.url("/team");
 				$scope.$apply();
 			});

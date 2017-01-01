@@ -4,11 +4,13 @@
 
 app.controller('UserTeamsCtrl', function($scope, AuthFactory, TeamFactory){
 
-	let currentUser = AuthFactory.getUser();
+	let user = AuthFactory.getUser();
+	let userId = "QmSojNh8V3afkwTQRTethNTU8Th2";
+	console.log("user inside viewUserTeamCtrl", user);
 
-	$scope.getMyTeams = function (currentUser) {
-		console.log("currentUser in getMyTeams is", currentUser);
-		TeamFactory.getUserTeams(currentUser)
+
+	$scope.getMyTeams = function () {
+		TeamFactory.getUserTeams(userId)
 		.then((data) => {
 			console.log('data', data);
 			$scope.teams = data;

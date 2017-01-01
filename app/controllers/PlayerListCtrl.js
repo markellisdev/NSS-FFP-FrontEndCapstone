@@ -3,7 +3,7 @@
 app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFactory, ClubFactory, MatchFactory, NumFactory, TeamFactory){
     console.log("Is PlayerListCtrl running here? ");
     let currentUser = AuthFactory.getUser();
-    let donkeys;
+    let donkeys; //Was originally players, but caused confusion with $scope.players
     $scope.players = [];
     $scope.clubs = [];
     $scope.matches = [];
@@ -95,21 +95,20 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
                 }
             }
         }
-        // console.log("donkeys", donkeys);
-        console.log("matchData", $scope.matches);
+
         //This iterates through matches to add points per week to players
         for (let n=15; n <= $scope.matches.length; n++) {
             // For each key, which should be a player id
             for (let playerId in $scope.matches[n]) {
-                console.log("Which player / match week? ", playerId, n);
+                // console.log("Which player / match week? ", playerId, n);
                 // For each player, compare key to players uID
                 for(var nn=0; nn < donkeys.length; nn++) {
                     if (playerId === donkeys[nn][uID]) {
                         donkeys[nn].playerScores = donkeys[nn].playerScores ? donkeys[nn].playerScores : [];
-                        console.log("player matched the score", nn, playerId, $scope.matches[n][playerId]);
-                        console.log("Which player? ", donkeys[nn].Name);
+                        // console.log("player matched the score", nn, playerId, $scope.matches[n][playerId]);
+                        // console.log("Which player? ", donkeys[nn].Name);
                         donkeys[nn].playerScores.push($scope.matches[n][playerId]);
-                        console.log("Is this the player?", donkeys[nn]);
+                        // console.log("Is this the player?", donkeys[nn]);
                     }
                 }
             }
@@ -120,9 +119,7 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
                 $scope.$apply();
             }
         }
-        console.log("loops done, player array", $scope.players);
-        console.log("Is this item a number?", Number.isNaN($scope.players[0]));
-        // $scope.players = donkeys;
-        // $scope.$apply();
+        // console.log("loops done, player array", $scope.players);
+        // console.log("Is this item a number?", Number.isNaN($scope.players[0]));
     });
 });

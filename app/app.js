@@ -56,7 +56,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 		        // child view two
 		        'userTeamView@root.home': {
-		            templateUrl: 'partials/userTeamView.html', controller: 'UserTeamsCtrl'
+		            templateUrl: 'partials/userTeamView.html', controller: 'UserTeamsCtrl',
+		            	resolve: {isAuth}
 		        },
 
 		        // the child views will be defined here (absolutely named)

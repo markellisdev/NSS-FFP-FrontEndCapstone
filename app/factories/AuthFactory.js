@@ -4,7 +4,7 @@ app.factory("AuthFactory", function($window) {
 	let currentUser = null;
 
 	let createUser = function(userObj){
-		return firebase.auth(). createUserWithEmailAndPassword(userObj.email, userObj.password);
+		return firebase.auth().createUserWithEmailAndPassword(userObj.email, userObj.password);
 	};
 
 	let loginUser = function(userObj){
@@ -21,7 +21,6 @@ app.factory("AuthFactory", function($window) {
 			firebase.auth().onAuthStateChanged((user) => {
 				if (user) {
 					currentUser = user.uid;
-					console.log("currentUser", currentUser);
 					resolve(true);
 				}
 				else {
@@ -34,6 +33,7 @@ app.factory("AuthFactory", function($window) {
 
 
 	let getUser = function() {
+		console.log("currentUser inside getUser", currentUser);
 		return currentUser;
 	};
 
