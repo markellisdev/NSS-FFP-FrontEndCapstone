@@ -8,16 +8,18 @@
     </button>
 </div>
 
-<div>
+<div class="teamSelector col-sm-6">
     <h2>See my team</h2>
     <button ng-click="getMyTeams()">Where's my team</button>
+
+
+    <div ng-repeat="team in teams">
+        <ul class="teams" id="{{team.teamID}}">
+            <li><a ui-sref="/team/{{team.teamID}}"></a>Team: {{team.title}}</li>
+
+            <!-- Loop over players in each team -->
+        </ul>
+    </div>
 </div>
 
-<div ng-repeat="team in teams">
-    <ul class="teams" id="{{team.teamID}}">
-        <li>Team: {{team.title}}</li>
-
-        <!-- Loop over players in each team -->
-    </ul>
-</div>
 
