@@ -16,6 +16,15 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
         $scope.clubs = clubsArray;
         $scope.$apply();
     });
+// Sort function for table
+	$scope.mySortFunction = function(item) {
+		// debugger;
+		switch ($scope.sortType) {
+			case "playerScores":
+				return parseInt(item.playerScores[0]);
+			default: return item[$scope.sortType];
+		}
+	};
 
 	$scope.addToFantasyTeam = function(selectedPlayer) {
 		console.log("Did this capture this individual player's id? ", selectedPlayer);
