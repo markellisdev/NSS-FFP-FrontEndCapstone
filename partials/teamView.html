@@ -1,14 +1,14 @@
-<h1>Team Selection</h1>
-
 <div class="row">
+<div class="col s12">
     <select>
     <option ng-repeat="x in selectProps">{{x}}</option>
     </select>
 </div>
+</div>
 
 <!-- Changed all href to ui-sref trying ui-router 9:45pm 12/23-->
 <div class="row collapse tabs" id="res-pos-tabs">
-
+    <div class="col s12">
         <div class="col-md-15 column tabs-title is-active">
             <a class="pos-title" ui-sref="#teams-panel-ALL" aria-selected="true" data-pos-tab="ALL">ALL</a>
         </div>
@@ -28,10 +28,11 @@
         <div class="col-md-15 column tabs-title">
             <a class="pos-title" ui-sref="#teams-panel-STR" data-pos-tab="STR" aria-selected="false">STR</a>
         </div>
-
+    </div>
 </div>
 
 <div class="row collapse tabs-content">
+    <div class="col s12">
     <table id="table-players" class="table table-striped table-bordered">
         <thead>
             <tr class="table-head">
@@ -80,4 +81,5 @@
 
         </tbody>
     </table>
+    </div>
 </div>
