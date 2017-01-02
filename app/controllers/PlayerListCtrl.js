@@ -17,9 +17,9 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
         $scope.$apply();
     });
 
-	function addToFantasyTeam(selectedPlayer) {
-
-	}
+	$scope.addToFantasyTeam = function(selectedPlayer) {
+		console.log("Did this capture this individual player's id? ", selectedPlayer);
+	};
 // Function to return completed matches, i.e. only matches that reached FullTime
     function isFullTime(match) {
       return match.MatchInfo.Period === 'FullTime';

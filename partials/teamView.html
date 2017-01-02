@@ -68,7 +68,7 @@
         </thead>
         <tbody ng-repeat="player in players | orderBy:sortType:sortReverse" ng-class-even="'even'">
 
-            <tr ng-click="doesThisWork" class="playerstats" style="display: table-row;">
+            <tr class="playerstats" style="display: table-row;">
                 <td class="player-info" data-plaid="3076"><i class="fa fa-info-circle"></i></td>
                 <td class="player-name name">{{player.Name}}</td>
                 <td class="team teamname player-teamname">
@@ -76,7 +76,7 @@
                 </td>
                 <td class="player-position">{{player.Position}}</td>
                 <td class="player-weekpoints" align="center">{{player.playerScores[0]}}</td>
-                <td align="center"><button ng-click="remove(item)">Add to Team</button></td> <!-- This will be used for Fantasy Team only, just tested here. Need to write function. -->
+                <td align="center"><button ng-click="addToFantasyTeam(player)">Add to Team</button></td> <!-- This will be used for Fantasy Team only, just tested here. Need to write function. -->
             </tr>
 
         </tbody>
