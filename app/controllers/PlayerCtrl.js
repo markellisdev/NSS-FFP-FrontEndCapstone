@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('AddPlayerCtrl', function($scope, TeamStorage, $location, AuthFactory){
+app.controller('AddPlayerCtrl', function($scope, PlayerFactory, $location, AuthFactory){
 
 	let currentUser = AuthFactory.getUser();
 

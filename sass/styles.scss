@@ -2,6 +2,12 @@ html, div, body, ul, ol {
 	margin: 0;
 }
 
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
 .pos-title {
 
 }
@@ -41,4 +47,12 @@ html, div, body, ul, ol {
 
 .even {
     background-color: #eaeaea;
+}
+
+th, td {
+    padding: 10px;
+}
+
+.tdCentered {
+    align: center;
 }

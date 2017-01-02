@@ -10,7 +10,7 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 	let logout = () => {
 		AuthFactory.logoutUser()
 		.then(function(data) {
-			$window.location.href = "/home";
+			$window.location.href = "/login";
 			$scope.$apply();
 		});
 	};
@@ -33,9 +33,9 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 			$window.location.href ="#/team";
 		})
 		.catch(function(error){
-		  console.log('Error logging in: ', error)
+		  console.log('Error logging in: ', error);
 		  alert("Either the username or password is incorrect. Please try again");
-		})
+		});
 	};
 
 	// Testing getPlayerList

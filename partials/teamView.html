@@ -32,7 +32,7 @@
 </div>
 
 <div class="row collapse tabs-content">
-    <table id="table-players" class="table table-bordered table-striped playerrow playlist">
+    <table id="table-players" class="table table-striped table-bordered">
         <thead>
             <tr class="table-head">
                 <th></th>
@@ -56,30 +56,26 @@
                     <!-- <span ng-show="sortType == 'Position' && !sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'Position' && sortReverse" class="fa fa-caret-up"></span></a> -->
                 </th>
-                <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">Week 11 Points</th>
-                <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">Week 12 Points</th>
-                <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">Week 13 Points</th>
-                <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">Week 14 Points</th>
-                <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">Week 15 Points</th>
-                <th class="sortableheader player-points points sort sort-desc" data-sortid="points"></th>
+                <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">
+                    <a ng-click="sortType='playerScores'; sortReverse = !sortReverse">
+                    Gameweek 15 Points
+                    <span ng-show="sortType == 'playerScores' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'playerScores' && sortReverse" class="fa fa-caret-up"></span></a>
+                </th>
+                <th>Add player to your team</th>
             </tr>
         </thead>
         <tbody ng-repeat="player in players | orderBy:sortType:sortReverse" ng-class-even="'even'">
 
-            <tr class="playerstats" style="display: table-row;">
+            <tr ng-click="doesThisWork" class="playerstats" style="display: table-row;">
                 <td class="player-info" data-plaid="3076"><i class="fa fa-info-circle"></i></td>
                 <td class="player-name name">{{player.Name}}</td>
                 <td class="team teamname player-teamname">
                     <div class="team-badge png2x" data-team="ARS">{{player.code}}</div>
                 </td>
                 <td class="player-position">{{player.Position}}</td>
-                <td class="player-weekpoints">5</td>
-                <td class="player-weekpoints">7</td>
-                <td class="player-weekpoints">2</td>
-                <td class="player-weekpoints">12</td>
-                <td class="player-weekpoints">10</td>
-                <td class="player-points sorted">121</td>
-                <!-- <td><button ng-click="remove(item)">remove</button></td> --> <!-- This will be used for Fantasy Team only, just tested here. Need to write function. -->
+                <td class="player-weekpoints" align="center">{{player.playerScores[0]}}</td>
+                <td align="center"><button ng-click="remove(item)">Add to Team</button></td> <!-- This will be used for Fantasy Team only, just tested here. Need to write function. -->
             </tr>
 
         </tbody>

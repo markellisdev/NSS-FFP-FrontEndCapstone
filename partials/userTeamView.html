@@ -1,12 +1,25 @@
 <div>
-    <form ng-submit="addPost()" style="margin-top:30px;">
-    <h3>Add a new post</h3>
-    <div class="form-group">
-        <input type="text"class="form-control" placeholder="Title" ng-model="title"></input>
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Link" ng-model="link"></input>
-    </div>
-    <button type="submit" class="btn btn-primary">Post</button>
-    </form>
+    <h2>Create your team</h2>
+
+    <input type="text" ng-model="newFantasyTeam.title" placeholder="Name your team" required>
+    <input type="text" ng-model="newFantasyTeam.description" placeholder="Description(optional)">
+    <button ng-click="addNewTeam()">
+        Add Your Team
+    </button>
 </div>
+
+<div class="teamSelector col-sm-6">
+    <h2>See my team</h2>
+    <button ng-click="getMyTeams()">Where's my team</button>
+
+
+    <div ng-repeat="team in teams">
+        <ul class="teams" id="{{team.teamID}}">
+            <li><a ui-sref="/team/{{team.teamID}}"></a>Team: {{team.title}}</li>
+
+            <!-- Loop over players in each team -->
+        </ul>
+    </div>
+</div>
+
+

@@ -23,37 +23,19 @@
 
 <!-- Temporary code to test login and register-->
 	<div ui-view="container">
-<!-- 			<section class="auth-form" ng-controller="LoginCtrl">
-				<h2>Login or Register</h2>
-				<div>
-					Email: <input type="text" autofocus="true" ng-model="account.email"></input>
-				</div>
-				<div>
-					Password: <input type="password" ng-model="account.password">
-				</div>
-				<div>
-					<button class="btn btn-info" ng-click="login()">
-						Login
-					</button>
-					<button class="btn btn-default" ng-click="register()">
-						Register
-					</button>
-					<button class="btn btn-default" ng-click="logout()">
-						Logout
-					</button>
-				</div>
-			</section> -->
+
 	</div>
 	<!-- PROVIDERS -->
 	<script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
 	<script type="text/javascript" src="/lib/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="/lib/bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.min.js"></script>
 	<!-- <script type="text/javascript" src="lib/bower_components/angular-route/angular-route.min.js"></script> -->
 	<script type="text/javascript" src="lib/bower_components/firebase/firebase.js"></script>
 	<!-- APP -->
-  <script type="text/javascript" src="app/app.js"></script>
+	<script type="text/javascript" src="app/app.js"></script>
 	<!-- VALUES -->
-  <script type="text/javascript" src="app/values/fb-creds.js"></script>
+	<script type="text/javascript" src="app/values/fb-creds.js"></script>
 	<!-- FACTORIES -->
 	<script type="text/javascript" src="app/factories/AuthFactory.js"></script>
 	<script type="text/javascript" src="app/factories/PlayerFactory.js"></script>
@@ -67,6 +49,7 @@
 	<script type="text/javascript" src="/app/controllers/ClubCtrl.js"></script>
 	<script type="text/javascript" src="/app/controllers/PlayerListCtrl.js"></script>
 	<script type="text/javascript" src="/app/controllers/AddTeamCtrl.js"></script>
+	<script type="text/javascript" src="/app/controllers/viewUserTeamCtrl.js"></script>
 	</body>
 
 </html>

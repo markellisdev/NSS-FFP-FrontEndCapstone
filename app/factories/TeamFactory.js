@@ -1,6 +1,6 @@
 "use strict";
 
-app.factory("TeamFactory", ($http, FBCreds) => {
+app.factory("TeamFactory", function($http, FBCreds)  {
 
 				// let playerCollection = playerObj;
 				// Object.keys(playerCollection).
@@ -43,7 +43,7 @@ app.factory("TeamFactory", ($http, FBCreds) => {
 	let postNewTeam = (newTeam) => {
 		console.log(newTeam);
 		return new Promise( (resolve, reject) => {
-			$http.post(`${FBCreds.databaseURL}/Team.json`, angular.toJson(newTeam))
+			$http.post(`${FBCreds.databaseURL}/Teams.json`, angular.toJson(newTeam))
 			.success( (teamObj) => {
 				getTeamList(teamObj);
 				resolve(teamObj);
@@ -55,13 +55,13 @@ app.factory("TeamFactory", ($http, FBCreds) => {
 	};
 
 	let getUserTeams = (userId) => {
-		// console.log('userId', userId);
+		console.log('userId', userId);
 		let userTeamsArr = [];
 		return new Promise((resolve, reject)=> {
 			$http.get(`${FBCreds.databaseURL}/Teams.json?orderBy="uid"&equalTo="${userId}"`)
 			.success((userTeams) => {
 				Object.keys(userTeams).forEach((fbKey) => {
-					userTeams[fbKey].id = fbKey;
+					userTeams[fbKey].teamID = fbKey;
 					userTeamsArr.push(userTeams[fbKey]);
 				});
 				// console.log('userTeamsArr from getUserTeams', userTeamsArr);
@@ -82,5 +82,5 @@ app.factory("TeamFactory", ($http, FBCreds) => {
 	// 	}
 	// };
 
-	return {getTeamList, getSingleTeam, postNewTeam};
+	return {getTeamList, getSingleTeam, postNewTeam, getUserTeams};
 });
