@@ -27,6 +27,14 @@ table, th , td  {
     overflow: auto; /* <-- here is what is important*/
 }
 
+.scrollable-area2 {
+    // margin: auto;
+    width: 100%;
+    height: 300px;
+    border: 2px solid #ccc;
+    overflow: auto; /* <-- here is what is important*/
+}
+
 .pos-title {
 
 }
@@ -78,4 +86,8 @@ th, td {
 
 .alignCenter {
     text-align: center;
+}
+
+.smaller-row {
+    max-height: 200px;
 }

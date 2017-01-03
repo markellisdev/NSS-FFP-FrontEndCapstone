@@ -1,7 +1,10 @@
 'use strict';
 
-app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFactory, ClubFactory, MatchFactory, NumFactory, TeamFactory){
+app.controller('PlayerListCtrl', ['$scope', '$rootScope', 'TeamStorage', '$location', 'AuthFactory', 'ClubFactory', 'MatchFactory', 'NumFactory', 'TeamFactory', 'FantasyPlayerFactory', 'LoginCtrlService',
+    function($scope, $rootScope, TeamStorage, $location, AuthFactory, ClubFactory, MatchFactory, NumFactory, TeamFactory, FantasyPlayerFactory, LoginCtrlService)
+    {
     console.log("Is PlayerListCtrl running here? ");
+
     let currentUser = AuthFactory.getUser();
     let donkeys; //Was originally players, but caused confusion with $scope.players
     $scope.players = [];
@@ -27,7 +30,13 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
 	};
 
 	$scope.addToFantasyTeam = function(selectedPlayer) {
+        selectedPlayer.teamID = LoginCtrlService.teamID;
 		console.log("Did this capture this individual player's id? ", selectedPlayer);
+		FantasyPlayerFactory.postNewPlayer(selectedPlayer)
+        .then ((playerObj)=> {
+            LoginCtrlService.Players.push(playerObj);
+            $rootScope.$broadcast("playersUpdated");
+        });
 	};
 // Function to return completed matches, i.e. only matches that reached FullTime
     function isFullTime(match) {
@@ -87,7 +96,6 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
     //This is for sorting data on the teamView partial
     $scope.sortType     = 'Name'; // set the default sort type
     $scope.sortReverse  = false;  // set the default sort order
-    $scope.selectProps = ["Season Points", "5 Week Form", "3 Week Form"];
     // Nothing after this happens until all promises are returned, players, clubs and matches
     Promise.all([p1, p2, p3]).then(() => {
         let uID = "-uID";
@@ -131,4 +139,4 @@ app.controller('PlayerListCtrl', function($scope, TeamStorage, $location, AuthFa
         // console.log("loops done, player array", $scope.players);
         // console.log("Is this item a number?", Number.isNaN($scope.players[0]));
     });
-});
+}]);

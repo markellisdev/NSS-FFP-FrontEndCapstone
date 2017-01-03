@@ -1,0 +1,20 @@
+<!-- partial-about.html -->
+
+<div class="jumbotron text-center">
+	<h1>Player Selection</h1>
+	<p>This page demonstrates <span class="text-danger">multiple</span> and <span class="tex-danger">named</span> views.</p>
+</div>
+
+<div class="row">
+
+	<!-- COLUMN ONE NAMED VIEW -->
+	<div class="col-sm-6">
+		<div ui-view="teamView"></div>
+	</div>
+
+	<!-- COLUMN TWO NAMED VIEW  -->
+		<div class="col-sm-6">
+		<div ui-view="userTeamView"></div>
+	</div>
+
+</div>
