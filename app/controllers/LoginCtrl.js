@@ -6,7 +6,7 @@ app.controller("LoginCtrl", ['$scope', "$rootScope", "AuthFactory", '$window', '
 	$scope.teamID = null;
 
 	$scope.account = {
-		email: "me@me.com",
+		email: "b@b.com",
 		password: "password1234"
 	};
 

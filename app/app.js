@@ -39,14 +39,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
 			}
 
 		})
-		// .state('root.home', {
-		//   url: '/',
-		//   views: {
-		//     'container@': {
-		//       templateUrl: 'partials/home.html'
-		//     }
-		//   }
-		// })
 		.state('root.home', {
 		    url: '/team',
 		    views: {
@@ -135,18 +127,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
 // }).config(function($locationProvider){
 // 	$locationProvider.html5Mode(true);
 // });
-app.run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
-  $rootScope.$state = $state;
-  $rootScope.$stateParams = $stateParams;
-  $state.transitionTo('root.home');
-}]);
-
-app.run( ($location, FBCreds) => {
+app.run(['$rootScope', '$state', '$stateParams', '$location', 'FBCreds', function ($rootScope, $state, $stateParams, $location, FBCreds) {
+	$rootScope.$state = $state;
+	$rootScope.$stateParams = $stateParams;
+	$state.transitionTo('root.home');
 	let creds = FBCreds;
 	let authConfig = {
 		apiKey: creds.apiKey,
 		authDomain: creds.authDomain
 	};
 	firebase.initializeApp(authConfig);
-});
+}]);
+
+
 
