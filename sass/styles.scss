@@ -100,7 +100,7 @@ th, td {
 }
 
 .grey-bg {
-    background-color: rgba(250,250,250,0.9);
+    background-color: rgba(250,250,250,0.7);
     border: 1px solid black;
     // opacity: 0.9;
     // filter: alpha(opacity=60);
@@ -112,4 +112,16 @@ th, td {
 
 .login-popup {
     height: 200px
+}
+
+.right {
+    float: right;
+}
+
+.editTeamInfo {
+    height: 154px;
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 35px;
+
 }

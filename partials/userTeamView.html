@@ -1,13 +1,16 @@
 <div class="row smaller-row" ng-hide="bananas">
     <div class="col s12">
-        <h2>Edit Team Info</h2>
-
-        <input type="text" ng-model="newFantasyTeam.title" placeholder="Name your team" required>
-        <input type="text" ng-model="newFantasyTeam.description" placeholder="Description(optional)">
+        <div class="col s6 editTeamInfo">
+            <h3>Edit Team Info</h3>
+        </div>
+        <div class="col s6">
+        <input type="text" ng-model="newFantasyTeam.title" placeholder="Name your team" required class="col s10">
+        <input type="text" ng-model="newFantasyTeam.description" placeholder="Description(optional)" class="col s10">
         <input type="hidden" ng-model="newFantasyTeam.teamID">
-        <button ng-click="editYourTeam(); bananas = !bananas">
+        <button ng-click="editYourTeam(); bananas = !bananas" class="col s6">
             Update Team
         </button>
+        </div>
     </div>
 </div>
 
