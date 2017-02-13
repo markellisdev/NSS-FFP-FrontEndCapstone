@@ -39,29 +39,30 @@ app.config(function($stateProvider, $urlRouterProvider) {
 			}
 
 		})
-		// .state('root.home', {
-		//   url: '/',
-		//   views: {
-		//     'container@': {
-		//       templateUrl: 'partials/home.html'
-		//     }
-		//   }
-		// })
 		.state('root.home', {
 		    url: '/team',
 		    views: {
 
 		        // the main template will be placed here (relatively named)
-		        'container@': { templateUrl: 'partials/home.html' },
+		        'container@': {
+		        	templateUrl: 'partials/home.html'
+		        },
 
 		        // the child views will be defined here (absolutely named)
 		        'userTeamView@root.home': {
-		            templateUrl: 'partials/userTeamView.html', controller: 'UserTeamsCtrl',
+		            templateUrl: 'partials/userTeamView.html',
+		            	controller: 'AddTeamCtrl',
 		            	resolve: {isAuth}
 		        },
 
 		        // child view two
-		        'teamView@root.home': { templateUrl: 'partials/teamView.html', controller: 'PlayerListCtrl'
+		        'teamView@root.home': { templateUrl: 'partials/teamView.html', controller: 'PlayerListCtrl',
+		        	resolve: {isAuth}
+		    	},
+
+		        // child view three
+		        'fantasyTeamView@root.home': { templateUrl: 'partials/fantasyTeamView.html', controller: 'PlayerListCtrl',
+		        	resolve: {isAuth}
 		    	}
 
 
@@ -126,18 +127,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
 // }).config(function($locationProvider){
 // 	$locationProvider.html5Mode(true);
 // });
-app.run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
-  $rootScope.$state = $state;
-  $rootScope.$stateParams = $stateParams;
-  $state.transitionTo('root.home');
-}]);
-
-app.run( ($location, FBCreds) => {
+app.run(['$rootScope', '$state', '$stateParams', '$location', 'FBCreds', function ($rootScope, $state, $stateParams, $location, FBCreds) {
+	$rootScope.$state = $state;
+	$rootScope.$stateParams = $stateParams;
+	$state.transitionTo('root.home');
 	let creds = FBCreds;
 	let authConfig = {
 		apiKey: creds.apiKey,
 		authDomain: creds.authDomain
 	};
 	firebase.initializeApp(authConfig);
-});
+}]);
+
+
 

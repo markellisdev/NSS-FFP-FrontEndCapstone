@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('AddPlayerCtrl', function($scope, PlayerFactory, $location, AuthFactory){
+app.controller('AddPlayerCtrl', function($scope, PlayerFactory, $location, AuthFactory, FantasyPlayerFactory){
 
 	let currentUser = AuthFactory.getUser();
 
@@ -22,5 +22,9 @@ app.controller('AddPlayerCtrl', function($scope, PlayerFactory, $location, AuthF
 				$scope.$apply();
 			});
 	};
+
+	// $scope.removePlayer(item) {
+	// 	FantasyPlayerFactory
+	// }
 
 });

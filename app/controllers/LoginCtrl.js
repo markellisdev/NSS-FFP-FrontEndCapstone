@@ -1,10 +1,13 @@
 "use strict";
 
-app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) {
+app.controller("LoginCtrl", ['$scope', "$rootScope", "AuthFactory", '$window', 'TeamStorage', 'TeamFactory', 'LoginCtrlService',
+	function($scope, $rootScope, AuthFactory, $window, TeamStorage, TeamFactory, LoginCtrlService) {
+
+	$scope.teamID = null;
 
 	$scope.account = {
-		email: "",
-		password: ""
+		email: "b@b.com",
+		password: "password1234"
 	};
 
 	let logout = () => {
@@ -22,19 +25,42 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 	$scope.register = () => {
 		AuthFactory.createUser($scope.account)
 		.then( (userData) => {
+			LoginCtrlService.account.uid = userData.uid;
+			LoginCtrlService.account.email = userData.email;
 			$scope.login();
+		})
+		.then( () => {
+			$scope.newFantasyTeam = {
+				'uid': LoginCtrlService.account.uid,
+				'title': '',
+				'description': '',
+				'teamID': ''
+			};
+			return TeamFactory.postNewTeam($scope.newFantasyTeam);
+		})
+		.then( (obj) => {
+			LoginCtrlService.teamID = obj.name;
 		});
 	};
 
 	$scope.login = () => {
-		AuthFactory.loginUser($scope.account)
-		.then( (user) => {
-			// $location.url('/team'); Didn't work
+		LoginCtrlService.login($scope.account, function(){
+			$scope.account=LoginCtrlService.account;
+			TeamFactory.getUserTeams(LoginCtrlService.account.uid)
+					.then (function(result) {
+						LoginCtrlService.teamID = result[0].teamID;
+						LoginCtrlService.title = result[0].title;
+						LoginCtrlService.description = result[0].description;
+						$rootScope.$broadcast("teamNameUpdated");
+					})
+			.then (function() {
+				TeamFactory.getTeamPlayers(LoginCtrlService.teamID)
+					.then (function(players) {
+						LoginCtrlService.Players = players;
+						$rootScope.$broadcast("playersUpdated");
+					});
+			});
 			$window.location.href ="#/team";
-		})
-		.catch(function(error){
-		  console.log('Error logging in: ', error);
-		  alert("Either the username or password is incorrect. Please try again");
 		});
 	};
 
@@ -63,6 +89,6 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, TeamStorage) 
 	// TeamStorage.playerHelper(TeamData);
 
 
-});
+}]);
 
 

@@ -2,10 +2,40 @@ html, div, body, ul, ol {
 	margin: 0;
 }
 
+body {
+    background: url("../images/PES%202013%20Etihad%20Stadium%20%2810%29.jpg") no-repeat;
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // -o-background-size: cover;
+        // background-size: cover;
+}
+
+.boldText {
+    color: white;
+    text-align: center;
+    background-color: #738585;
+}
+
 table, th , td  {
   border: 1px solid grey;
   border-collapse: collapse;
   padding: 5px;
+}
+
+.scrollable-area {
+    // margin: auto;
+    width: 100%;
+    height: 600px;
+    border: 2px solid #ccc;
+    overflow: auto; /* <-- here is what is important*/
+}
+
+.scrollable-area2 {
+    // margin: auto;
+    width: 100%;
+    height: 600px;
+    border: 2px solid #ccc;
+    overflow: auto; /* <-- here is what is important*/
 }
 
 .pos-title {
@@ -54,5 +84,44 @@ th, td {
 }
 
 .tdCentered {
-    align: center;
+    text-align: center;
+}
+
+.alignCenter {
+    text-align: center;
+}
+
+.smaller-row {
+    max-height: 200px;
+}
+
+.white-bg {
+    background-color: white;
+}
+
+.grey-bg {
+    background-color: rgba(250,250,250,0.7);
+    border: 1px solid black;
+    // opacity: 0.9;
+    // filter: alpha(opacity=60);
+}
+
+.ltgrey-bg {
+    background-color: #fff;
+}
+
+.login-popup {
+    height: 200px
+}
+
+.right {
+    float: right;
+}
+
+.editTeamInfo {
+    height: 154px;
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 35px;
+
 }

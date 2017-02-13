@@ -1,38 +1,21 @@
-<h1>Team Selection</h1>
+<div class="row">
+    <div class="jumbotron text-center col s12">
+        <h2 class="alignCenter">Player Selection</h2>
+        <p class="alignCenter">Select players for your side below</p>
+    </div>
+</div>
 
 <div class="row">
-    <select>
-    <option ng-repeat="x in selectProps">{{x}}</option>
-    </select>
+    <div class="col s12">
+        <select>
+        <option ng-repeat="x in selectProps">{{x}}</option>
+        </select>
+    </div>
 </div>
 
-<!-- Changed all href to ui-sref trying ui-router 9:45pm 12/23-->
-<div class="row collapse tabs" id="res-pos-tabs">
-
-        <div class="col-md-15 column tabs-title is-active">
-            <a class="pos-title" ui-sref="#teams-panel-ALL" aria-selected="true" data-pos-tab="ALL">ALL</a>
-        </div>
-
-        <div class="col-md-15 column tabs-title">
-            <a class="pos-title" ui-sref="#teams-panel-GK" data-pos-tab="GK" aria-selected="false">GK</a>
-        </div>
-
-        <div class="col-md-15 column tabs-title">
-            <a class="pos-title" ui-sref="#teams-panel-DEF" data-pos-tab="DEF" aria-selected="false">DEF</a>
-        </div>
-
-        <div class="col-md-15 column tabs-title">
-            <a class="pos-title" ui-sref="#teams-panel-MID" data-pos-tab="MID" aria-selected="false">MID</a>
-        </div>
-
-        <div class="col-md-15 column tabs-title">
-            <a class="pos-title" ui-sref="#teams-panel-STR" data-pos-tab="STR" aria-selected="false">STR</a>
-        </div>
-
-</div>
-
-<div class="row collapse tabs-content">
-    <table id="table-players" class="table table-striped table-bordered">
+<div class="row collapse tabs-content ltgrey-bg">
+    <div class="col s12 scrollable-area z-depth-4">
+    <table id="table-players" class="table table-striped table-bordered" ng-table="tableParams">
         <thead>
             <tr class="table-head">
                 <th></th>
@@ -57,27 +40,28 @@
                     <span ng-show="sortType == 'Position' && sortReverse" class="fa fa-caret-up"></span></a> -->
                 </th>
                 <th class="sortableheader player-weekpoints weekpoints" data-sortid="weekpoints">
-                    <a ng-click="sortType='playerScores'; sortReverse = !sortReverse">
+                    <a ng-click="sortType='playerScores'; sortReverse = !sortReverse; comparator">
                     Gameweek 15 Points
                     <span ng-show="sortType == 'playerScores' && !sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'playerScores' && sortReverse" class="fa fa-caret-up"></span></a>
                 </th>
-                <th>Add player to your team</th>
+                <th class="tdCentered">Add player to your team</th>
             </tr>
         </thead>
-        <tbody ng-repeat="player in players | orderBy:sortType:sortReverse" ng-class-even="'even'">
+        <tbody ng-repeat="player in players | orderBy:mySortFunction:sortReverse" ng-class-even="'even'">
 
-            <tr ng-click="doesThisWork" class="playerstats" style="display: table-row;">
+            <tr class="playerstats" style="display: table-row;">
                 <td class="player-info" data-plaid="3076"><i class="fa fa-info-circle"></i></td>
                 <td class="player-name name">{{player.Name}}</td>
                 <td class="team teamname player-teamname">
                     <div class="team-badge png2x" data-team="ARS">{{player.code}}</div>
                 </td>
                 <td class="player-position">{{player.Position}}</td>
-                <td class="player-weekpoints" align="center">{{player.playerScores[0]}}</td>
-                <td align="center"><button ng-click="remove(item)">Add to Team</button></td> <!-- This will be used for Fantasy Team only, just tested here. Need to write function. -->
+                <td class="player-weekpoints tdCentered">{{player.playerScores[0]}}</td>
+                <td class="tdCentered"><button ng-click="addToFantasyTeam(player)">Add to Team</button></td> <!-- This will be used for Fantasy Team only, just tested here. Need to write function. -->
             </tr>
 
         </tbody>
     </table>
+    </div>
 </div>

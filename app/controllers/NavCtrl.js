@@ -1,12 +1,15 @@
 "use strict";
 
-app.controller("NavCtrl", function(AuthFactory, $scope, $window){
+app.controller("NavCtrl", ['AuthFactory', '$scope', '$window', 'LoginCtrlService', function(AuthFactory, $scope, $window, LoginCtrlService){
 
 	$scope.isLoggedIn = false;
+	$scope.email = "";
+
 	firebase.auth().onAuthStateChanged( function(user){
 		if (user) {
 			$scope.isLoggedIn = true;
 			console.log("current user logged in", user, $scope.isLoggedIn);
+			$scope.email = LoginCtrlService.account.email;
 			$scope.$apply();
 		}else{
 			$scope.isLoggedIn = false;
@@ -18,4 +21,4 @@ app.controller("NavCtrl", function(AuthFactory, $scope, $window){
 	$scope.logout = () => {
 		AuthFactory.logoutUser();
 	};
-});
+}]);

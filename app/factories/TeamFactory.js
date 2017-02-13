@@ -28,11 +28,16 @@ app.factory("TeamFactory", function($http, FBCreds)  {
 		});
 	};
 
-	let getSingleTeam = (teamId) => {
+	let getTeamPlayers = (teamID) => {
+		let teamPlayers = [];
 		return new Promise((resolve, reject) => {
-			$http.get(`${FBCreds.databaseURL}/Teams/${teamId}.json`)
-			.success( (teamObj) => {
-				resolve(teamObj);
+			$http.get(`${FBCreds.databaseURL}/FantasyPlayers.json?orderBy="teamID"&equalTo="${teamID}"`)
+			.success( (playerObj) => {
+				Object.keys(playerObj).forEach((fbKey) => {
+					playerObj[fbKey].associationKey = fbKey;
+					teamPlayers.push(playerObj[fbKey]);
+				});
+				resolve(teamPlayers);
 			})
 			.error( (error) => {
 				reject(error);
@@ -70,6 +75,25 @@ app.factory("TeamFactory", function($http, FBCreds)  {
 		});
 	};
 
+	let updateTeam = (team, id) => {
+		return new Promise((resolve, reject) => {
+			$http.patch(`${FBCreds.databaseURL}/Teams/${id}.json`, angular.toJson(team))
+			.success(()=> {
+				resolve(true);
+			}
+			);
+		});
+	};
+
+	let deletePlayer = (id) => {
+		return new Promise((resolve, reject) => {
+			$http.delete(`${FBCreds.databaseURL}/FantasyPlayers/${id}.json`)
+			.success(() => {
+				resolve(true);
+			});
+		});
+	};
+
 	// let playerHelper = (teamData) => {
 	// 	for(var x=0; x<teamData.length; x++) {
 	// 		let TeamsArr = teamData[x].Team;
@@ -82,5 +106,5 @@ app.factory("TeamFactory", function($http, FBCreds)  {
 	// 	}
 	// };
 
-	return {getTeamList, getSingleTeam, postNewTeam, getUserTeams};
+	return {getTeamList, getTeamPlayers, postNewTeam, getUserTeams, updateTeam, deletePlayer};
 });
