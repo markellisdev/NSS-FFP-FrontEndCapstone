@@ -6,4 +6,4 @@ This is an app for fans of English Premiere League Football, playing in weekly F
 
 
 
-![alt text](../images/EPL_FFP_ScreenShot.png "Description of this app")
+![Alt Text](https://github.com/markellisdev/NSS-FFP-FrontEndCapstone/blob/master/images/EPL_FFP_ScreenShot.png)
