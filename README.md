@@ -5,8 +5,8 @@ By Mark Ellis
 <table>
 <tr>
 <td>
-  This is a proof of concept app for fans of English Premiere League Football, playing in weekly Fantasy Leagues.\
-  \
+  This is a proof of concept app for fans of English Premiere League Football, playing in weekly Fantasy Leagues.
+
   The objective is to aid one in selecting the best players to put in his or her side each week, based on stats from the current season. Users may login and adjust their team lineup on a weekly basis, based on stats for that Gameweek.
 
   I had originally planned to use an API, but was unable to find an accessible free API containing all the data I wanted. A helpful individual in the dev community was gracious enough to provide me with directories of many xml documents containing ALL the statistical data from the current season. I then had to convert them to json files and iterate over them to extract only the information I intended to use. I then created a "cloud API" of data using Firebase from which I made requests via this app. A separate API was set up under Firebase to store information about the User and their team.
@@ -44,3 +44,6 @@ Upon login, the User's previously selected squad is shown. Here they may edit Te
 
 [![Mark Ellis](https://avatars1.githubusercontent.com/u/20229705?v=3&u=f2f9e8b581f01b12eb8ab716a9a47a28e10001b5&s=400)](https://github.com/markellisdev)
 [Mark Ellis ](https://github.com/markellisdev)
+=======
+
+![alt text](../images/EPL_FFP_ScreenShot.png "Description of this app")
