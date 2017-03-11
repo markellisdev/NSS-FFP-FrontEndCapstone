@@ -44,6 +44,3 @@ Upon login, the User's previously selected squad is shown. Here they may edit Te
 
 [![Mark Ellis](https://avatars1.githubusercontent.com/u/20229705?v=3&u=f2f9e8b581f01b12eb8ab716a9a47a28e10001b5&s=400)](https://github.com/markellisdev)
 [Mark Ellis ](https://github.com/markellisdev)
-=======
-
-![alt text](../images/EPL_FFP_ScreenShot.png "Description of this app")
