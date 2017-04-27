@@ -36,6 +36,9 @@ app.controller('PlayerListCtrl', ['$scope', '$rootScope', 'TeamStorage', '$locat
         .then ((playerObj)=> {
             LoginCtrlService.Players.push(playerObj);
             $rootScope.$broadcast("playersUpdated");
+            //remove player from list
+            console.log("is this trying to remove the right player? ", selectedPlayer ); //This is getting correct player- below function not correct though
+            if ( ~selectedPlayer ) $scope.players.splice(selectedPlayer, 1); //this doesn't seem to work
         });
 	};
 // Function to return completed matches, i.e. only matches that reached FullTime
